@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">What Animal Are You</string>
+
+    <string-array name="choices_array">
+        <item>Totally Disagree</item>
+        <item>Disagree</item>
+        <item>Neutral</item>
+        <item>Agree</item>
+        <item>Totally Agree</item>
+    </string-array>
 </resources>
