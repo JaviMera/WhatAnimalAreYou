@@ -1,4 +1,4 @@
-package com.example.javier.whatanimalareyou.model;
+package com.example.javier.whatanimalareyou.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
