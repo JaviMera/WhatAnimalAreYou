@@ -1,7 +1,9 @@
-package com.example.javier.whatanimalareyou;
+package com.example.javier.whatanimalareyou.model;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.javier.whatanimalareyou.R;
 
 public class MainActivity extends AppCompatActivity {
 
