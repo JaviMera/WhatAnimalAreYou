@@ -1,4 +1,4 @@
-package com.example.javier.whatanimalareyou.model;
+package com.example.javier.whatanimalareyou.model.Animals;
 
 /**
  * Created by Javier on 10/4/2016.
