@@ -1,5 +1,6 @@
 package com.example.javier.whatanimalareyou.ui;
 
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -13,7 +14,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<String> mChoices;
     private Spinner mSpinner;
 
     @Override
@@ -22,11 +22,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         String[] choicesArray = getResources().getStringArray(R.array.choices_array);
-        mChoices = new ArrayList<>(Arrays.asList(choicesArray));
 
         mSpinner = (Spinner)findViewById(R.id.choiceSpinnerView);
-        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.choices_array, android.R.layout.simple_spinner_item);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ChoiceSpinnerAdapter spinnerAdapter = new ChoiceSpinnerAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            Typeface.createFromAsset(getAssets(), "fonts/LuckiestGuy.ttf"),
+            new ArrayList<>(Arrays.asList(choicesArray))
+            );
+
         mSpinner.setAdapter(spinnerAdapter);
     }
 }
