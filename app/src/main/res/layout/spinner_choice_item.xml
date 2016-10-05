@@ -4,5 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textSize="15sp"
-    android:textColor="@color/choice_text_color">
+    android:textColor="@color/choice_text_color"
+    android:paddingLeft="10dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
 </TextView>

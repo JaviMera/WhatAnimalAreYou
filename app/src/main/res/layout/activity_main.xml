@@ -4,25 +4,63 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".ui.MainActivity"
-    android:orientation="vertical">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <Spinner
-            android:id="@+id/choiceSpinnerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
-
-    </RelativeLayout>
+    android:orientation="vertical"
+    android:background="@android:color/background_light">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
-        android:text="This is a test"/>
+        android:layout_weight="1"
+        android:text="App image goes here"
+        android:gravity="center"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@drawable/statement_background">
+
+        <TextView
+            android:id="@+id/statementTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Do you like eating little niggers in the jungle?"
+            android:textColor="@color/statement_text_color"
+            android:layout_alignParentTop="true"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:padding="20dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/statementCountTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1 of 5"
+            android:textColor="@color/statement_remaining_text"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="15dp"/>
+
+    </RelativeLayout>
+
+    <Spinner
+        android:id="@+id/choiceSpinnerView"
+        android:background="@drawable/spinner_background"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="Buttons for navigation go here"
+        android:gravity="center"/>
 </LinearLayout>

@@ -3,6 +3,8 @@
     android:id="@+id/spinnerDropDownChoiceTextView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/background_light"
     android:textSize="15sp"
-    android:textColor="@color/choice_text_color">
+    android:textColor="@color/choice_text_color"
+    android:padding="10dp">
 </TextView>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+
+        <shape
+            android:shape="rectangle">
+
+            <solid
+                android:color="@android:color/background_light" />
+
+            <stroke
+                android:color="@color/statement_background_color"
+                android:width="2dp" />
+
+            <corners android:radius="5dp" />
+        </shape>
+
+    </item>
+    <item>
+        <bitmap
+            android:gravity="center|right"
+            android:src="@drawable/arrow_down_float"/>
+    </item>
+
+</layer-list>
+
