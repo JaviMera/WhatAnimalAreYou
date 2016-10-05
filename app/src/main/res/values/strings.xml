@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">What Animal Are You</string>
+    <string name="next_button_text">next</string>
+    <string name="previous_button_text">previous</string>
 
     <string-array name="choices_array">
         <item>Totally Disagree</item>

@@ -17,11 +17,13 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withSpinnerText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 
 /**
  * Created by Javier on 10/4/2016.
@@ -53,5 +55,14 @@ public class MainActivityUITest {
 
         // Assert
         onView(withId(R.id.choiceSpinnerView)).check(matches(withSpinnerText(choices[0])));
+    }
+
+    @Test
+    public void activityCreateNavigationButtons() throws Exception {
+
+        // Assert
+        onView(withId(R.id.previousButtonView)).check(matches(isDisplayed()));
+        onView(withId(R.id.previousButtonView)).check(matches(not(isEnabled())));
+        onView(withId(R.id.nextButtonView)).check(matches(isDisplayed()));
     }
 }

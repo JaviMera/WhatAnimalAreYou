@@ -57,10 +57,35 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="15dp"/>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:text="Buttons for navigation go here"
-        android:gravity="center"/>
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/previousButtonView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/previous_button_text"
+            android:textAllCaps="true"
+            android:textColor="@android:color/background_light"
+            android:enabled="false"
+            android:background="@drawable/navigation_button_background"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:id="@+id/nextButtonView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/next_button_text"
+            android:textAllCaps="true"
+            android:textColor="@android:color/background_light"
+            android:background="@drawable/navigation_button_background"
+            android:layout_margin="5dp" />
+    </LinearLayout>
+
 </LinearLayout>

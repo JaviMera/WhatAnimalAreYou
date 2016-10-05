@@ -7,4 +7,8 @@
     <color name="statement_background_color">#EF4036</color>
     <color name="statement_text_color">#ffffff</color>
     <color name="statement_remaining_text">#C5342B</color>
+    <color name="navigation_button_disabled">#4F1512</color>
+    <color name="navigation_button_enabled">#EF4036</color>
+    <color name="navigation_button_shadow">#C5342B</color>
+    <color name="navigation_button_disabled_shadow">#1D1212</color>
 </resources>

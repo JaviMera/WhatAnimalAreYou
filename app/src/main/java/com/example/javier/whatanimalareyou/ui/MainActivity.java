@@ -2,8 +2,10 @@ package com.example.javier.whatanimalareyou.ui;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     private Spinner mChoiceSpinner;
     private TextView mStatementTextView;
     private TextView mStatementsCountTextView;
+
     private MainActivityPresenter mPresenter;
 
     private final String LUCKIEST_GUYS_FONT = "fonts/LuckiestGuy.ttf";
