@@ -24,11 +24,11 @@ public class ChoiceSpinnerAdapter extends ArrayAdapter<String> {
     private List<String> mChoices;
     private Typeface mFont;
 
-    public ChoiceSpinnerAdapter(Context context, int spinnerLayout, Typeface font, List<String> choices) {
+    public ChoiceSpinnerAdapter(Context context, int spinnerLayout, String fontPath, List<String> choices) {
         super(context, spinnerLayout);
 
         mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mFont = font;
+        mFont = Typeface.createFromAsset(context.getAssets(), fontPath);
         mChoices = choices;
     }
 

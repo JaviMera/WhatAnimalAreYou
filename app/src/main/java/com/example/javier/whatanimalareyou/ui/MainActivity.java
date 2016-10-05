@@ -1,8 +1,10 @@
 package com.example.javier.whatanimalareyou.ui;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -10,36 +12,68 @@ import com.example.javier.whatanimalareyou.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainActivityView {
+
+    private HashMap<Integer, TextView> mTextViewMap;
 
     private Spinner mChoiceSpinner;
     private TextView mStatementTextView;
     private TextView mStatementsCountTextView;
+    private MainActivityPresenter mPresenter;
+
+    private final String LUCKIEST_GUYS_FONT = "fonts/LuckiestGuy.ttf";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/LuckiestGuy.ttf");
+        mStatementTextView = getView(R.id.statementTextView);
+        mStatementsCountTextView = getView(R.id.statementCountTextView);
 
-        mStatementTextView = (TextView)findViewById(R.id.statementTextView);
-        mStatementTextView.setTypeface(font);
+        mTextViewMap = new HashMap<>();
+        mTextViewMap.put(R.id.statementTextView, mStatementTextView);
+        mTextViewMap.put(R.id.statementCountTextView, mStatementsCountTextView);
 
-        mStatementsCountTextView = (TextView)findViewById(R.id.statementCountTextView);
-        mStatementsCountTextView.setTypeface(font);
+        mPresenter = new MainActivityPresenter(this);
+        mPresenter.updateTextViewTypeface(R.id.statementTextView, LUCKIEST_GUYS_FONT);
+        mPresenter.updateTextViewTypeface(R.id.statementCountTextView, LUCKIEST_GUYS_FONT);
 
         String[] choicesArray = getResources().getStringArray(R.array.choices_array);
 
-        mChoiceSpinner = (Spinner)findViewById(R.id.choiceSpinnerView);
-        ChoiceSpinnerAdapter spinnerAdapter = new ChoiceSpinnerAdapter(
+        mChoiceSpinner = getView(R.id.choiceSpinnerView);
+        mPresenter.setSpinnerAdapterView(
             this,
-            android.R.layout.simple_spinner_item,
-            font,
-            new ArrayList<>(Arrays.asList(choicesArray))
-            );
+            R.layout.spinner_choice_item,
+            LUCKIEST_GUYS_FONT,
+            Arrays.asList(choicesArray));
+    }
+
+    @Override
+    public void updateTextViewTypeface(int viewId, String path) {
+        Typeface font = Typeface.createFromAsset(getAssets(), path);
+
+        mTextViewMap
+            .get(viewId)
+            .setTypeface(font);
+    }
+
+    @Override
+    public void setSpinnerAdapterView(Context ctx, int spinnerLayout, String fontPath, List<String> spinnerChoiceItems) {
+
+        ChoiceSpinnerAdapter spinnerAdapter = new ChoiceSpinnerAdapter(
+            ctx,
+            R.layout.spinner_choice_item,
+            LUCKIEST_GUYS_FONT,
+            spinnerChoiceItems);
 
         mChoiceSpinner.setAdapter(spinnerAdapter);
+    }
+
+    private <T extends View> T getView(int id) {
+        return (T) findViewById(id);
     }
 }
