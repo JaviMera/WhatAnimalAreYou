@@ -24,27 +24,13 @@
 
         <TextView
             android:id="@+id/statementTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="Do you like eating little niggers in the jungle?"
-            android:textColor="@color/statement_text_color"
-            android:layout_alignParentTop="true"
-            android:textAlignment="center"
-            android:textSize="25sp"
-            android:padding="20dp"
-            android:textStyle="bold"/>
+            style="@style/StatementTextView" />
 
         <TextView
             android:id="@+id/statementCountTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="1 of 5"
-            android:textColor="@color/statement_remaining_text"
-            android:textStyle="bold"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:layout_alignParentBottom="true"
-            android:paddingBottom="15dp"/>
+            style="@style/StatementCountTextView" />
 
     </RelativeLayout>
 
@@ -66,26 +52,14 @@
 
         <Button
             android:id="@+id/previousButtonView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/previous_button_text"
-            android:textAllCaps="true"
-            android:textColor="@android:color/background_light"
+            android:textColor="@color/disabled_text_color"
             android:enabled="false"
-            android:background="@drawable/navigation_button_background"
-            android:layout_margin="5dp"/>
+            style="@style/PreviousButton"/>
 
         <Button
             android:id="@+id/nextButtonView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/next_button_text"
-            android:textAllCaps="true"
-            android:textColor="@android:color/background_light"
-            android:background="@drawable/navigation_button_background"
-            android:layout_margin="5dp" />
+            android:textColor="@color/plain_white"
+            style="@style/NextButton" />
     </LinearLayout>
 
 </LinearLayout>

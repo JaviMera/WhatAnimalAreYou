@@ -5,10 +5,11 @@
     <color name="colorAccent">#FF4081</color>
     <color name="choice_text_color">#A7A9AB</color>
     <color name="statement_background_color">#EF4036</color>
-    <color name="statement_text_color">#ffffff</color>
-    <color name="statement_remaining_text">#C5342B</color>
+    <color name="plain_white">#ffffff</color>
+    <color name="statement_count_text_color">#C5342B</color>
     <color name="navigation_button_disabled">#4F1512</color>
     <color name="navigation_button_enabled">#EF4036</color>
     <color name="navigation_button_shadow">#C5342B</color>
     <color name="navigation_button_disabled_shadow">#1D1212</color>
+    <color name="disabled_text_color">#564F4F</color>
 </resources>

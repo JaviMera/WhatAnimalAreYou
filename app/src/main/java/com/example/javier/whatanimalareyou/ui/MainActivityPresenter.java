@@ -1,6 +1,8 @@
 package com.example.javier.whatanimalareyou.ui;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.view.View;
 
 import java.util.List;
 
@@ -13,12 +15,11 @@ public class MainActivityPresenter {
     private MainActivityView mView;
 
     public MainActivityPresenter(MainActivityView view){
-
         mView = view;
     }
 
-    public void updateTextViewTypeface(int viewId, String fontPath) {
-        mView.updateTextViewTypeface(viewId, fontPath);
+    public void updateViewTypeface(View view, Typeface font) {
+        mView.updateViewTypeface(view, font);
     }
 
     public void setSpinnerAdapterView(Context ctx, int spinnerLayout, String fontPath, List<String> spinnerChoiceItems) {

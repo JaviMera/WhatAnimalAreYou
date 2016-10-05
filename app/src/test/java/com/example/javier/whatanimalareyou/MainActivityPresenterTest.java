@@ -1,5 +1,9 @@
 package com.example.javier.whatanimalareyou;
 
+import android.graphics.Typeface;
+import android.widget.Button;
+import android.widget.TextView;
+
 import com.example.javier.whatanimalareyou.ui.MainActivityPresenter;
 import com.example.javier.whatanimalareyou.ui.MainActivityView;
 
@@ -34,14 +38,14 @@ public class MainActivityPresenterTest {
     public void updateTextViewTypeface() throws Exception {
 
         // Arrange
-        int someId = 1234;
-        String somePath = "fonts/amazing.ttf";
+        TextView tv = new TextView(null);
+        Typeface font = Typeface.DEFAULT;
 
         // Act
-        mPresenter.updateTextViewTypeface(someId, somePath);
+        mPresenter.updateViewTypeface(tv, font);
 
         // Assert
-        Mockito.verify(view).updateTextViewTypeface(someId, somePath);
+        Mockito.verify(view).updateViewTypeface(tv, font);
     }
 
     @Test

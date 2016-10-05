@@ -2,7 +2,6 @@ package com.example.javier.whatanimalareyou.ui;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.graphics.drawable.GradientDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
@@ -12,19 +11,16 @@ import android.widget.TextView;
 
 import com.example.javier.whatanimalareyou.R;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MainActivityView {
 
-    private HashMap<Integer, TextView> mTextViewMap;
-
     private Spinner mChoiceSpinner;
     private TextView mStatementTextView;
     private TextView mStatementsCountTextView;
-
+    private AppCompatButton mPreviousButtonView;
+    private AppCompatButton mNextButtonView;
     private MainActivityPresenter mPresenter;
 
     private final String LUCKIEST_GUYS_FONT = "fonts/LuckiestGuy.ttf";
@@ -34,16 +30,19 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Typeface font = Typeface.createFromAsset(getAssets(), LUCKIEST_GUYS_FONT);
+
         mStatementTextView = getView(R.id.statementTextView);
         mStatementsCountTextView = getView(R.id.statementCountTextView);
 
-        mTextViewMap = new HashMap<>();
-        mTextViewMap.put(R.id.statementTextView, mStatementTextView);
-        mTextViewMap.put(R.id.statementCountTextView, mStatementsCountTextView);
+        mPreviousButtonView = getView(R.id.previousButtonView);
+        mNextButtonView = getView(R.id.nextButtonView);
 
         mPresenter = new MainActivityPresenter(this);
-        mPresenter.updateTextViewTypeface(R.id.statementTextView, LUCKIEST_GUYS_FONT);
-        mPresenter.updateTextViewTypeface(R.id.statementCountTextView, LUCKIEST_GUYS_FONT);
+        mPresenter.updateViewTypeface(mStatementTextView, font);
+        mPresenter.updateViewTypeface(mStatementsCountTextView, font);
+        mPresenter.updateViewTypeface(mPreviousButtonView, font);
+        mPresenter.updateViewTypeface(mNextButtonView, font);
 
         String[] choicesArray = getResources().getStringArray(R.array.choices_array);
 
@@ -56,12 +55,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     }
 
     @Override
-    public void updateTextViewTypeface(int viewId, String path) {
-        Typeface font = Typeface.createFromAsset(getAssets(), path);
+    public void updateViewTypeface(View view, Typeface font) {
 
-        mTextViewMap
-            .get(viewId)
-            .setTypeface(font);
+        if(view instanceof TextView)
+        {
+            ((TextView)view).setTypeface(font);
+        }
     }
 
     @Override

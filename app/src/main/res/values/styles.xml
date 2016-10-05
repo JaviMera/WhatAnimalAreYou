@@ -8,4 +8,39 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextViewBase">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/statement_text_size</item>
+        <item name="android:padding">@dimen/statement_text_padding</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="StatementTextView" parent="TextViewBase">
+        <item name="android:textColor">@color/plain_white</item>
+        <item name="android:layout_alignParentTop">true</item>
+    </style>
+
+    <style name="StatementCountTextView" parent="TextViewBase">
+        <item name="android:textColor">@color/statement_count_text_color</item>
+        <item name="android:layout_alignParentBottom">true</item>
+    </style>
+
+    <style name="NavButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/navigation_button_background</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="PreviousButton" parent="NavButton">
+        <item name="android:text">@string/previous_button_text</item>
+    </style>
+
+    <style name="NextButton" parent="NavButton">
+        <item name="android:text">@string/next_button_text</item>
+    </style>
 </resources>
