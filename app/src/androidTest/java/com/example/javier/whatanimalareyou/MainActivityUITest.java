@@ -28,7 +28,7 @@ import static org.hamcrest.Matchers.is;
  */
 
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTest {
+public class MainActivityUITest {
 
     @Rule
     public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<MainActivity>(MainActivity.class);
