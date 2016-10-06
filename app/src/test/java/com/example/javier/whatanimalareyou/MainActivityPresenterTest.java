@@ -1,7 +1,7 @@
 package com.example.javier.whatanimalareyou;
 
 import android.graphics.Typeface;
-import android.widget.Button;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.javier.whatanimalareyou.ui.MainActivityPresenter;
@@ -26,12 +26,12 @@ public class MainActivityPresenterTest {
     private MainActivityPresenter mPresenter;
 
     @Mock
-    private MainActivityView view;
+    private MainActivityView mView;
 
     @Before
     public void SetUp() {
 
-        mPresenter = new MainActivityPresenter(view);
+        mPresenter = new MainActivityPresenter(mView);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class MainActivityPresenterTest {
         mPresenter.updateViewTypeface(tv, font);
 
         // Assert
-        Mockito.verify(view).updateViewTypeface(tv, font);
+        Mockito.verify(mView).updateViewTypeface(tv, font);
     }
 
     @Test
@@ -60,6 +60,49 @@ public class MainActivityPresenterTest {
         mPresenter.setSpinnerAdapterView(null, spinnerLayout, fontPath, spinnerChoiceItems);
 
         // Assert
-        Mockito.verify(view).setSpinnerAdapterView(null, spinnerLayout, fontPath, spinnerChoiceItems);
+        Mockito.verify(mView).setSpinnerAdapterView(null, spinnerLayout, fontPath, spinnerChoiceItems);
+    }
+
+    @Test
+    public void updateViewText() throws Exception {
+
+        // Arrange
+        View view = new View(null);
+        String text = "some text";
+
+        // Act
+        mPresenter.updateTextViewText(view, text);
+
+        // Assert
+        Mockito.verify(mView).updateTextViewText(view, text);
+    }
+
+    @Test
+    public void updateTextColor() throws Exception {
+
+        // Arrange
+        View view = new View(null);
+        int color = 1234;
+
+        // Act
+        mPresenter.updateTextColor(view, color);
+
+        // Assert
+        Mockito.verify(mView).updateTextColor(view, color);
+    }
+
+    @Test
+    public void setViewEnabled() throws Exception {
+
+        // Arrange
+        View view = new View(null);
+        boolean enabled = true;
+
+        // Act
+        mPresenter.setViewEnabled(view, enabled);
+
+
+        // Assert
+        Mockito.verify(mView).setViewEnabled(view, enabled);
     }
 }

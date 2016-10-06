@@ -29,18 +29,4 @@ public class StatementTest {
         // Assert
         Assert.assertEquals(expectedText, statement.getText());
     }
-
-    @Test
-    public void setChoiceReturnsSelectedChoice() throws Exception {
-
-        // Arrange
-        ChoiceEnum expectedChoice = ChoiceEnum.Agree;
-
-        // Act
-        statement.setChoiceSelected(expectedChoice);
-        ChoiceEnum actualChoice = statement.getChoiceSelected();
-
-        // Assert
-        Assert.assertEquals(expectedChoice, actualChoice);
-    }
 }

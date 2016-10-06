@@ -14,4 +14,7 @@ public interface MainActivityView {
 
     void updateViewTypeface(View view, Typeface font);
     void setSpinnerAdapterView(Context ctx, int spinnerLayout, String fontPath, List<String> spinnerChoiceItems);
+    void updateTextViewText(View view, String text);
+    void updateTextColor(View view, int color);
+    void setViewEnabled(View view, boolean enabled);
 }
