@@ -52,11 +52,13 @@
             android:id="@+id/previousButtonView"
             android:textColor="@color/disabled_text_color"
             android:enabled="false"
+            android:onClick="previousClick"
             style="@style/PreviousButton"/>
 
         <Button
             android:id="@+id/nextButtonView"
             android:textColor="@color/plain_white"
+            android:onClick="nextClick"
             style="@style/NextButton" />
     </LinearLayout>
 

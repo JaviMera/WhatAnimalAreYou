@@ -50,50 +50,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         mStatementsCountTextView = getView(R.id.statementCountTextView);
 
         mPreviousButtonView = getView(R.id.previousButtonView);
-        mPreviousButtonView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (mStatements.atLast()) {
-
-                    mPresenter.setViewEnabled(mNextButtonView, true);
-                    mPresenter.updateTextColor(mNextButtonView, R.color.plain_white);
-                }
-
-                mCurrentStatement = mStatements.previous();
-                mPresenter.updateTextViewText(mStatementTextView, mCurrentStatement.getText());
-                mPresenter.updateTextViewText(mStatementsCountTextView, String.format(Locale.ENGLISH, "%d of %d", mCurrentStatement.getNumber(), mStatements.max()));
-
-                if (mStatements.atFirst())
-                {
-                    mPresenter.setViewEnabled(mPreviousButtonView, false);
-                    mPresenter.updateTextColor(mPreviousButtonView, R.color.disabled_text_color);
-                }
-            }
-        });
-
         mNextButtonView = getView(R.id.nextButtonView);
-        mNextButtonView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(mStatements.atFirst()){
-
-                    mPresenter.updateTextColor(mPreviousButtonView, R.color.plain_white);
-                    mPresenter.setViewEnabled(mPreviousButtonView, true);
-                }
-
-                mCurrentStatement = mStatements.get();
-                mPresenter.updateTextViewText(mStatementTextView, mCurrentStatement.getText());
-                mPresenter.updateTextViewText(mStatementsCountTextView, String.format(Locale.ENGLISH, "%d of %d", mCurrentStatement.getNumber(), mStatements.max()));
-
-                if(mStatements.atLast())
-                {
-                    mNextButtonView.setEnabled(false);
-                    mPresenter.updateTextColor(mNextButtonView, R.color.disabled_text_color);
-                }
-            }
-        });
 
         mPresenter = new MainActivityPresenter(this);
         mPresenter.updateViewTypeface(mStatementTextView, font);
@@ -115,6 +72,43 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
 
     }
 
+    public void previousClick(View view) {
+
+        if (mStatements.atLast()) {
+
+            mPresenter.setViewEnabled(mNextButtonView, true);
+            mPresenter.updateTextColor(mNextButtonView, R.color.plain_white);
+        }
+
+        mCurrentStatement = mStatements.previous();
+        mPresenter.updateTextViewText(mStatementTextView, mCurrentStatement.getText());
+        mPresenter.updateTextViewText(mStatementsCountTextView, String.format(Locale.ENGLISH, "%d of %d", mCurrentStatement.getNumber(), mStatements.max()));
+
+        if (mStatements.atFirst())
+        {
+            mPresenter.setViewEnabled(mPreviousButtonView, false);
+            mPresenter.updateTextColor(mPreviousButtonView, R.color.disabled_text_color);
+        }
+    }
+
+    public void nextClick(View view) {
+
+        if(mStatements.atFirst()){
+
+            mPresenter.updateTextColor(mPreviousButtonView, R.color.plain_white);
+            mPresenter.setViewEnabled(mPreviousButtonView, true);
+        }
+
+        mCurrentStatement = mStatements.get();
+        mPresenter.updateTextViewText(mStatementTextView, mCurrentStatement.getText());
+        mPresenter.updateTextViewText(mStatementsCountTextView, String.format(Locale.ENGLISH, "%d of %d", mCurrentStatement.getNumber(), mStatements.max()));
+
+        if(mStatements.atLast())
+        {
+            mNextButtonView.setEnabled(false);
+            mPresenter.updateTextColor(mNextButtonView, R.color.disabled_text_color);
+        }
+    }
     @Override
     public void updateViewTypeface(View view, Typeface font) {
 
