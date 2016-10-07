@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         mPresenter.updateViewTypeface(mPreviousButtonView, font);
         mPresenter.updateViewTypeface(mNextButtonView, font);
 
-        mPresenter.updateTextViewText(mStatementTextView, mCurrentStatement.getText());
-        mPresenter.updateTextViewText(mStatementsCountTextView, String.format(Locale.ENGLISH, "%d of %d", mCurrentStatement.getNumber(), mStatements.max()));
+        mPresenter.updateStatementText(mCurrentStatement.getText());
+        mPresenter.updateStatementCountText(mCurrentStatement.getNumber(), mStatements.max());
 
         String[] choicesArray = getResources().getStringArray(R.array.choices_array);
 
@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
             R.layout.spinner_choice_item,
             LUCKIEST_GUYS_FONT,
             Arrays.asList(choicesArray));
-
     }
 
     public void previousClick(View view) {
@@ -81,8 +80,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         }
 
         mCurrentStatement = mStatements.previous();
-        mPresenter.updateTextViewText(mStatementTextView, mCurrentStatement.getText());
-        mPresenter.updateTextViewText(mStatementsCountTextView, String.format(Locale.ENGLISH, "%d of %d", mCurrentStatement.getNumber(), mStatements.max()));
+        mPresenter.updateStatementText(mCurrentStatement.getText());
+        mPresenter.updateStatementCountText(mCurrentStatement.getNumber(), mStatements.max());
 
         if (mStatements.atFirst())
         {
@@ -100,8 +99,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         }
 
         mCurrentStatement = mStatements.get();
-        mPresenter.updateTextViewText(mStatementTextView, mCurrentStatement.getText());
-        mPresenter.updateTextViewText(mStatementsCountTextView, String.format(Locale.ENGLISH, "%d of %d", mCurrentStatement.getNumber(), mStatements.max()));
+        mPresenter.updateStatementText(mCurrentStatement.getText());
+        mPresenter.updateStatementCountText(mCurrentStatement.getNumber(), mStatements.max());
 
         if(mStatements.atLast())
         {
@@ -131,12 +130,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     }
 
     @Override
-    public void updateTextViewText(View view, String text) {
-
-        if(view instanceof TextView) {
-
-            ((TextView)view).setText(text);
-        }
+    public void updateStatementTextViewText(String text) {
+        mStatementTextView.setText(text);
     }
 
     @Override
@@ -153,6 +148,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     @Override
     public void setViewEnabled(View view, boolean enabled) {
         view.setEnabled(enabled);
+    }
+
+    @Override
+    public void updateStatementCountTextViewText(int current, int max) {
+        String text = String.format(Locale.ENGLISH, "%d of %d", current, max);
+        mStatementsCountTextView.setText(text);
     }
 
     private <T extends View> T getView(int id) {

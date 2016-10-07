@@ -64,17 +64,30 @@ public class MainActivityPresenterTest {
     }
 
     @Test
-    public void updateViewText() throws Exception {
+    public void updateStatementText() throws Exception {
 
         // Arrange
-        View view = new View(null);
         String text = "some text";
 
         // Act
-        mPresenter.updateTextViewText(view, text);
+        mPresenter.updateStatementText(text);
 
         // Assert
-        Mockito.verify(mView).updateTextViewText(view, text);
+        Mockito.verify(mView).updateStatementTextViewText(text);
+    }
+
+    @Test
+    public void updateStatementCounterText() throws Exception {
+
+        // Arrange
+        int current = 1;
+        int max = 3;
+
+        // Act
+        mPresenter.updateStatementCountText(current, max);
+
+        // Assert
+        Mockito.verify(mView).updateStatementCountTextViewText(current, max);
     }
 
     @Test
@@ -105,4 +118,5 @@ public class MainActivityPresenterTest {
         // Assert
         Mockito.verify(mView).setViewEnabled(view, enabled);
     }
+
 }

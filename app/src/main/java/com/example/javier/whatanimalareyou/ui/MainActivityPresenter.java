@@ -26,15 +26,19 @@ public class MainActivityPresenter {
         mView.setSpinnerAdapterView(ctx, spinnerLayout, fontPath, spinnerChoiceItems);
     }
 
-    public void updateTextViewText(View view, String text) {
-        mView.updateTextViewText(view, text);
-    }
-
     public void updateTextColor(View view, int color) {
         mView.updateTextColor(view, color);
     }
 
     public void setViewEnabled(View view, boolean enabled) {
         mView.setViewEnabled(view, enabled  );
+    }
+
+    public void updateStatementCountText(int current, int max) {
+        mView.updateStatementCountTextViewText(current, max);
+    }
+
+    public void updateStatementText(String text) {
+        mView.updateStatementTextViewText(text);
     }
 }
