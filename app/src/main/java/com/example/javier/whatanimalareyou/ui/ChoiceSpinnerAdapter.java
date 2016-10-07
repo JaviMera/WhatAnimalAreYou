@@ -39,6 +39,11 @@ public class ChoiceSpinnerAdapter extends ArrayAdapter<String> {
     }
 
     @Override
+    public int getPosition(String item) {
+        return mChoices.indexOf(item);
+    }
+
+    @Override
     public int getCount() {
         return mChoices.size();
     }

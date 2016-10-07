@@ -194,6 +194,59 @@ public class MainActivityUITest {
         onView(withId(R.id.statementCountTextView)).check(matches(withText(expectedText)));
     }
 
+    @Test
+    public void spinnerTextDisplaysFirstItemWhenThereIsNoSelection() throws Exception {
+
+        // Arrange
+        String[] choices = activityRule.getActivity().getResources().getStringArray(R.array.choices_array);
+        String expectedChoice = choices[0];
+
+        // Act
+        onView(withId(R.id.choiceSpinnerView)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(choices[2]))).perform(click());
+        onView(withId(R.id.nextButtonView)).perform(click());
+
+        // Assert
+        onView(withId(R.id.choiceSpinnerView)).check(matches(withSpinnerText(expectedChoice)));
+    }
+
+    @Test
+    public void spinnerTextDisplaysPreviouslySelectedItem() throws Exception {
+
+        // Arrange
+        String[] choices = activityRule.getActivity().getResources().getStringArray(R.array.choices_array);
+        String expectedChoice = choices[2];
+
+        // Act
+        onView(withId(R.id.choiceSpinnerView)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(choices[2]))).perform(click());
+        onView(withId(R.id.nextButtonView)).perform(click());
+        onView(withId(R.id.previousButtonView)).perform(click());
+
+        // Assert
+        onView(withId(R.id.choiceSpinnerView)).check(matches(withSpinnerText(expectedChoice)));
+    }
+
+    @Test
+    public void spinnerTextDisplaysPreviouslySelectedItemAfterNextButtonPress() throws Exception {
+
+        // Arrange
+        String[] choices = activityRule.getActivity().getResources().getStringArray(R.array.choices_array);
+        String expectedChoice = choices[3];
+
+        // Act
+        onView(withId(R.id.choiceSpinnerView)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(choices[0]))).perform(click());
+        onView(withId(R.id.nextButtonView)).perform(click());
+        onView(withId(R.id.choiceSpinnerView)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(choices[3]))).perform(click());
+        onView(withId(R.id.previousButtonView)).perform(click());
+        onView(withId(R.id.nextButtonView)).perform(click());
+
+        // Assert
+        onView(withId(R.id.choiceSpinnerView)).check(matches(withSpinnerText(expectedChoice)));
+    }
+
     private class ButtonTextColorMatcher extends BaseMatcher {
 
         private int mExpectedColor;

@@ -10,11 +10,13 @@ public class Statement {
 
     private String mText;
     private int mNumber;
+    private String mChoice;
 
     public Statement(String text, int number){
 
         mText = text;
         mNumber = number;
+        mChoice = "";
     }
 
     public String getText() {
@@ -23,5 +25,13 @@ public class Statement {
 
     public int getNumber() {
         return mNumber;
+    }
+
+    public void setChoice(String choice) {
+        this.mChoice = choice;
+    }
+
+    public String getChoice() {
+        return mChoice;
     }
 }
