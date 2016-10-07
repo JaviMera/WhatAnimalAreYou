@@ -3,6 +3,7 @@ package com.example.javier.whatanimalareyou.ui;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.menu.ExpandedMenuView;
@@ -103,17 +104,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         mPresenter.updateStatementText(mCurrentStatement.getText());
         mPresenter.updateStatementCountText(mCurrentStatement.getNumber(), mStatements.max());
 
-        if(mCurrentStatement.getChoice().equals("")){
-
-            mChoiceSpinner.setSelection(0);
-            String selectedChoice = ((ChoiceSpinnerAdapter)mChoiceSpinner.getAdapter()).getItem(0);
-            mCurrentStatement.setChoice(selectedChoice);
-        }
-        else
-        {
-            int currentStatementChoiceIndex = ((ChoiceSpinnerAdapter)mChoiceSpinner.getAdapter()).getPosition(mCurrentStatement.getChoice());
-            mChoiceSpinner.setSelection(currentStatementChoiceIndex);
-        }
+        updateSpinnerSelectedItem(mChoiceSpinner, mCurrentStatement);
 
         if (mStatements.atFirst())
         {
@@ -134,21 +125,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         mPresenter.updateStatementText(mCurrentStatement.getText());
         mPresenter.updateStatementCountText(mCurrentStatement.getNumber(), mStatements.max());
 
-        if(mCurrentStatement.getChoice().equals("")){
-
-            mChoiceSpinner.setSelection(0);
-            String selectedChoice = ((ChoiceSpinnerAdapter)mChoiceSpinner.getAdapter()).getItem(0);
-            mCurrentStatement.setChoice(selectedChoice);
-        }
-        else
-        {
-            int currentStatementChoiceIndex = ((ChoiceSpinnerAdapter)mChoiceSpinner.getAdapter()).getPosition(mCurrentStatement.getChoice());
-            mChoiceSpinner.setSelection(currentStatementChoiceIndex);
-        }
+        updateSpinnerSelectedItem(mChoiceSpinner, mCurrentStatement);
 
         if(mStatements.atLast())
         {
-            mNextButtonView.setEnabled(false);
+            mPresenter.setViewEnabled(mNextButtonView, false);
             mPresenter.updateTextColor(mNextButtonView, R.color.disabled_text_color);
         }
     }
@@ -176,6 +157,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     @Override
     public void updateStatementTextViewText(String text) {
         mStatementTextView.setText(text);
+    }
+
+    @Override
+    public void updateSpinnerSelectedItem(int choicePosition) {
+        mChoiceSpinner.setSelection(choicePosition);
     }
 
     @Override
@@ -213,5 +199,22 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         }
 
         mStatements.load(statements);
+    }
+
+    private void updateSpinnerSelectedItem(Spinner choiceSpinner, Statement currentStatement) {
+
+        ChoiceSpinnerAdapter adapter = (ChoiceSpinnerAdapter)choiceSpinner.getAdapter();
+
+        if(currentStatement.getChoice().equals("")){
+
+            String selectedChoice = adapter.getItem(0);
+            currentStatement.setChoice(selectedChoice);
+            mPresenter.updateSpinnerSelectedItem(0);
+        }
+        else
+        {
+            int currentStatementChoiceIndex = adapter.getPosition(currentStatement.getChoice());
+            mPresenter.updateSpinnerSelectedItem(currentStatementChoiceIndex);
+        }
     }
 }

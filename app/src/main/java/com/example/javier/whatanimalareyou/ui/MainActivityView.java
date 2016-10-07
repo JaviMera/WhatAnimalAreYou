@@ -18,4 +18,5 @@ public interface MainActivityView {
     void setViewEnabled(View view, boolean enabled);
     void updateStatementCountTextViewText(int current, int max);
     void updateStatementTextViewText(String text);
+    void updateSpinnerSelectedItem(int choicePosition);
 }

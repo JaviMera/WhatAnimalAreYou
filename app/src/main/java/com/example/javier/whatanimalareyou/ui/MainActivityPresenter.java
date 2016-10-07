@@ -41,4 +41,8 @@ public class MainActivityPresenter {
     public void updateStatementText(String text) {
         mView.updateStatementTextViewText(text);
     }
+
+    public void updateSpinnerSelectedItem(int choicePosition) {
+        mView.updateSpinnerSelectedItem(choicePosition);
+    }
 }

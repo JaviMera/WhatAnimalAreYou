@@ -119,4 +119,16 @@ public class MainActivityPresenterTest {
         Mockito.verify(mView).setViewEnabled(view, enabled);
     }
 
+    @Test
+    public void updateSpinnerSelectedItem() throws Exception {
+
+        // Arrange
+        int choicePosition = 2;
+
+        // Act
+        mPresenter.updateSpinnerSelectedItem(choicePosition);
+
+        // Assert
+        Mockito.verify(mView).updateSpinnerSelectedItem(choicePosition);
+    }
 }
