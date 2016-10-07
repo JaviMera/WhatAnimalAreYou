@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatButton;
 import android.widget.Spinner;
 
+import com.example.javier.whatanimalareyou.model.Statement;
 import com.example.javier.whatanimalareyou.ui.MainActivity;
 
 import org.hamcrest.BaseMatcher;
@@ -42,16 +43,17 @@ public class MainActivityUITest {
     public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<MainActivity>(MainActivity.class);
 
     @Test
-    public void activityCreateFirstStatementIsDisplayed() throws Exception {
+    public void statementCountTextViewDisplaysCorrectCount() throws Exception {
 
         // Arrange
         String[] statements = activityRule.getActivity().getResources().getStringArray(R.array.statements_array);
-
-        //  Act
+        String expectedStatementCountText = "1 of " + statements.length;
 
         // Assert
         onView(withId(R.id.statementTextView)).check(matches(isDisplayed()));
         onView(withId(R.id.statementTextView)).check(matches(withText(statements[0])));
+        onView(withId(R.id.statementCountTextView)).check(matches(isDisplayed()));
+        onView(withId(R.id.statementCountTextView)).check(matches(withText(expectedStatementCountText)));
     }
 
     @Test
@@ -59,7 +61,6 @@ public class MainActivityUITest {
 
         // Assert
         onView(withId(R.id.choiceSpinnerView)).check(matches(isDisplayed()));
-
     }
 
     @Test
@@ -99,6 +100,98 @@ public class MainActivityUITest {
         onView(withId(R.id.statementTextView)).check(matches(withText(statements[1])));
         onView(withId(R.id.previousButtonView)).check(matches(isEnabled()));
         onView(withId(R.id.previousButtonView)).check(matches(new ButtonTextColorMatcher(enabledColor)));
+    }
+
+    @Test
+    public void nextButtonDisabledAtLastStatement() throws Exception {
+
+        // Arrange
+        String[] statements = activityRule.getActivity().getResources().getStringArray(R.array.statements_array);
+        int disabledColor = ContextCompat.getColor(activityRule.getActivity(), R.color.disabled_text_color);
+
+        // Act
+        for(int i = 0 ; i < statements.length - 1 ; i++)
+            onView(withId(R.id.nextButtonView)).perform(click());
+
+        // Assert
+        onView(withId(R.id.nextButtonView)).check(matches(not(isEnabled())));
+        onView(withId(R.id.nextButtonView)).check(matches(new ButtonTextColorMatcher(disabledColor)));
+    }
+
+    @Test
+    public void previousButtonEnablesNextButton() throws Exception {
+
+        // Arrange
+        String[] statements = activityRule.getActivity().getResources().getStringArray(R.array.statements_array);
+        int enabledColor = ContextCompat.getColor(activityRule.getActivity(), R.color.plain_white);
+
+        // Act
+        for(int i = 0 ; i < statements.length - 1 ; i++)
+            onView(withId(R.id.nextButtonView)).perform(click());
+
+        onView(withId(R.id.previousButtonView)).perform(click());
+
+        // Assert
+        onView(withId(R.id.nextButtonView)).check(matches(isEnabled()));
+        onView(withId(R.id.nextButtonView)).check(matches(new ButtonTextColorMatcher(enabledColor)));
+    }
+
+    @Test
+    public void previousButtonShowsPreviousStatement() throws Exception {
+
+        // Arrange
+        String[] statements = activityRule.getActivity().getResources().getStringArray(R.array.statements_array);
+
+        // Act
+        for(int i = 0 ; i < statements.length - 1 ; i++)
+            onView(withId(R.id.nextButtonView)).perform(click());
+
+        onView(withId(R.id.previousButtonView)).perform(click());
+
+        // Assert
+        onView(withId(R.id.statementTextView)).check(matches(withText(statements[3])));
+    }
+
+    @Test
+    public void previousButtonDisabledAtFirstStatement() throws Exception {
+
+        // Arrange
+        int disabledColor = ContextCompat.getColor(activityRule.getActivity(), R.color.disabled_text_color);
+
+        // Act
+        onView(withId(R.id.nextButtonView)).perform(click());
+        onView(withId(R.id.previousButtonView)).perform(click());
+
+        // Assert
+        onView(withId(R.id.previousButtonView)).check(matches(not(isEnabled())));
+        onView(withId(R.id.previousButtonView)).check(matches(new ButtonTextColorMatcher(disabledColor)));
+    }
+
+    @Test
+    public void nextButtonUpdatesStatementCounterTextView() throws Exception {
+
+        // Arrange
+        String expectedText = "2 of 5";
+
+        // Act
+        onView(withId(R.id.nextButtonView)).perform(click());
+
+        // Assert
+        onView(withId(R.id.statementCountTextView)).check(matches(withText(expectedText)));
+    }
+
+    @Test
+    public void previousButtonUpdatesStatementCounterTextView() throws Exception {
+
+        // Arrange
+        String expectedText = "1 of 5";
+
+        // Act
+        onView(withId(R.id.nextButtonView)).perform(click());
+        onView(withId(R.id.previousButtonView)).perform(click());
+
+        // Assert
+        onView(withId(R.id.statementCountTextView)).check(matches(withText(expectedText)));
     }
 
     private class ButtonTextColorMatcher extends BaseMatcher {

@@ -9,15 +9,19 @@ import java.util.HashMap;
 public class Statement {
 
     private String mText;
-    private HashMap<Integer, AnimalBase> mChoiceAnimalMap;
+    private int mNumber;
 
-    public Statement(String text){
+    public Statement(String text, int number){
 
         mText = text;
-        mChoiceAnimalMap = new HashMap<>();
+        mNumber = number;
     }
 
     public String getText() {
         return mText;
+    }
+
+    public int getNumber() {
+        return mNumber;
     }
 }

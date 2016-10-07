@@ -15,12 +15,13 @@ public class StatementTest {
 
     private Statement statement;
     private String expectedText;
+    private int expectedNumber = 1;
 
     @Before
     public void setUp() throws Exception {
 
         expectedText = "I'm more of a group type person";
-        statement = new Statement(expectedText);
+        statement = new Statement(expectedText, 1);
     }
 
     @Test
@@ -28,5 +29,6 @@ public class StatementTest {
 
         // Assert
         Assert.assertEquals(expectedText, statement.getText());
+        Assert.assertEquals(expectedNumber, statement.getNumber());
     }
 }

@@ -28,7 +28,6 @@
 
         <TextView
             android:id="@+id/statementCountTextView"
-            android:text="1 of 5"
             style="@style/StatementCountTextView" />
 
     </RelativeLayout>
