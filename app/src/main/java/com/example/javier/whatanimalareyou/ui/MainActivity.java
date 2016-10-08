@@ -1,6 +1,7 @@
 package com.example.javier.whatanimalareyou.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
@@ -62,6 +63,15 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         mNextButtonView = getView(R.id.nextButtonView);
 
         mResultsButtonView = getView(R.id.resultsButton);
+        mResultsButtonView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int points = getPoints(mStatements);
+                Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         mPresenter = new MainActivityPresenter(this);
         mPresenter.updateViewTypeface(mStatementTextView, font);
@@ -95,6 +105,19 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
 
             }
         });
+    }
+
+    private int getPoints (StatementList statements) {
+
+        int points = 0;
+        List<Integer> choices = statements.getChoices();
+
+        for(int statementNumber = 0 ; statementNumber < statements.max() ; statementNumber++)
+        {
+            points += StatementResult.get(statementNumber, choices.get(statementNumber)).getValue();
+        }
+
+        return points;
     }
 
     public void previousClick(View view) {

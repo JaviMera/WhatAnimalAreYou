@@ -145,7 +145,6 @@ public class StatementListTest {
     @Test
     public void maxReturnsMaxAmountOfStatements() throws Exception {
 
-        // Arrange
         List<Statement> statements = createStatements();
         mStatementList.load(statements);
         int expectedMax = statements.size();
@@ -155,6 +154,30 @@ public class StatementListTest {
 
         // Assert
         Assert.assertEquals(expectedMax, actualMax);
+    }
+
+    @Test
+    public void getChoices() throws Exception {
+
+        // Arrange
+        List<Statement> statements = createStatements();
+        mStatementList.load(statements);
+        List<Integer> expectedChoices = new ArrayList<Integer>(){
+            {add(4);}
+            {add(1);}
+            {add(2);}
+            {add(3);}
+            {add(0);}
+        };
+
+        // Act
+        for(Integer choice : expectedChoices)
+        {
+            mStatementList.get().setChoice(choice);
+        }
+
+        // Assert
+        Assert.assertEquals(expectedChoices, mStatementList.getChoices());
     }
 
     private List<Statement> createStatements(){

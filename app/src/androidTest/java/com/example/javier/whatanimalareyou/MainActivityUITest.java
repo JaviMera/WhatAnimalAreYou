@@ -31,6 +31,7 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.notNullValue;
 
 /**
  * Created by Javier on 10/4/2016.
@@ -279,15 +280,23 @@ public class MainActivityUITest {
         onView(withId(R.id.resultsButton)).check(matches(isDisplayed()));
     }
 
-    //    @Test
-//    public void resultButtonPressNewActivityResult() throws Exception {
-//
-//        // Arrange
-//        String resultActivityString = "Other Activity";
-//
-//        // Act
-//        onView(withId(R.id.resultsButton)).
-//    }
+        @Test
+    public void resultButtonPressNewActivityResult() throws Exception {
+
+        // Arrange
+        String[] choices = activityRule.getActivity().getResources().getStringArray(R.array.choices_array);
+        String expectedActivityText = activityRule.getActivity().getString(R.string.result_text);
+
+        // Act
+        for(String s : choices){
+            onView(withId(R.id.nextButtonView)).perform(click());
+        }
+
+        onView(withId(R.id.resultsButton)).perform(click());
+
+        // Assert
+        onView(withText(expectedActivityText)).check(matches(notNullValue()));
+    }
 
     private class ButtonTextColorMatcher extends BaseMatcher {
 

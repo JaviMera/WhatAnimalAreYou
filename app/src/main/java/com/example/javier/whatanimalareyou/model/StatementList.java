@@ -60,4 +60,16 @@ public class StatementList {
 
         return mStatements.size();
     }
+
+    public List<Integer> getChoices() {
+
+        List<Integer> choices = new ArrayList<>();
+
+        for(Statement s : mStatements)
+        {
+            choices.add(s.getChoice());
+        }
+
+        return choices;
+    }
 }

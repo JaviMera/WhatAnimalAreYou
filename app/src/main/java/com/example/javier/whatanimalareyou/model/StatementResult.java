@@ -8,11 +8,11 @@ import java.util.HashMap;
 
 public class StatementResult {
 
-    private static final int FIRST_CHOICE = 1;
-    private static final int SECOND_CHOICE = 2;
-    private static final int THIRD_CHOICE = 3;
-    private static final int FOURTH_CHOICE = 4;
-    private static final int FIFTH_CHOICE = 5;
+    private static final int FIRST_CHOICE = 0;
+    private static final int SECOND_CHOICE = 1;
+    private static final int THIRD_CHOICE = 2;
+    private static final int FOURTH_CHOICE = 3;
+    private static final int FIFTH_CHOICE = 4;
 
     private static final Dolphin dolphinInstance = new Dolphin();
     private static final Tiger tigerInstance = new Tiger();
@@ -62,11 +62,11 @@ public class StatementResult {
 
     private static HashMap<Integer, HashMap<Integer, AnimalBase>> resultMap = new HashMap<Integer, HashMap<Integer, AnimalBase>>()
     {
-        {put(1, firstStatementResults);}
-        {put(2, secondStatementResults);}
-        {put(3, thirdStatementResults);}
-        {put(4, fourthStatementResults);}
-        {put(5, fifthStatementResults);}
+        {put(0, firstStatementResults);}
+        {put(1, secondStatementResults);}
+        {put(2, thirdStatementResults);}
+        {put(3, fourthStatementResults);}
+        {put(4, fifthStatementResults);}
     };
 
     public static AnimalBase get(int statementNumber, int choice) {
