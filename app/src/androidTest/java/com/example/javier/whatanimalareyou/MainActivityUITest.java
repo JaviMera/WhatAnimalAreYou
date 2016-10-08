@@ -43,6 +43,18 @@ public class MainActivityUITest {
     public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<MainActivity>(MainActivity.class);
 
     @Test
+    public void statementTextViewDisplaysFirstStatementText() throws Exception {
+
+        // Arrange
+        String[] statements = activityRule.getActivity().getResources().getStringArray(R.array.statements_array);
+        String expectedStatementText = statements[0];
+
+        // Assert
+        onView(withId(R.id.statementTextView)).check(matches(isDisplayed()));
+        onView(withId(R.id.statementTextView)).check(matches(withText(expectedStatementText)));
+    }
+
+    @Test
     public void statementCountTextViewDisplaysCorrectCount() throws Exception {
 
         // Arrange
@@ -50,8 +62,6 @@ public class MainActivityUITest {
         String expectedStatementCountText = "1 of " + statements.length;
 
         // Assert
-        onView(withId(R.id.statementTextView)).check(matches(isDisplayed()));
-        onView(withId(R.id.statementTextView)).check(matches(withText(statements[0])));
         onView(withId(R.id.statementCountTextView)).check(matches(isDisplayed()));
         onView(withId(R.id.statementCountTextView)).check(matches(withText(expectedStatementCountText)));
     }
@@ -84,6 +94,13 @@ public class MainActivityUITest {
         onView(withId(R.id.previousButtonView)).check(matches(isDisplayed()));
         onView(withId(R.id.previousButtonView)).check(matches(not(isEnabled())));
         onView(withId(R.id.nextButtonView)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void activityOnCreateResultsButtonNotVisible() throws Exception {
+
+        // Assert
+        onView(withId(R.id.resultsButton)).check(matches(not(isDisplayed())));
     }
 
     @Test
@@ -246,6 +263,31 @@ public class MainActivityUITest {
         // Assert
         onView(withId(R.id.choiceSpinnerView)).check(matches(withSpinnerText(expectedChoice)));
     }
+
+    @Test
+    public void resultButtonVisibleAfterReachingLastStatement() throws Exception {
+
+        // Arrange
+        String[] choices = activityRule.getActivity().getResources().getStringArray(R.array.choices_array);
+
+        // Act
+        for(String s : choices){
+            onView(withId(R.id.nextButtonView)).perform(click());
+        }
+
+        // Assert
+        onView(withId(R.id.resultsButton)).check(matches(isDisplayed()));
+    }
+
+    //    @Test
+//    public void resultButtonPressNewActivityResult() throws Exception {
+//
+//        // Arrange
+//        String resultActivityString = "Other Activity";
+//
+//        // Act
+//        onView(withId(R.id.resultsButton)).
+//    }
 
     private class ButtonTextColorMatcher extends BaseMatcher {
 

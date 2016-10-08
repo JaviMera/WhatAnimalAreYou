@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     private TextView mStatementsCountTextView;
     private AppCompatButton mPreviousButtonView;
     private AppCompatButton mNextButtonView;
+    private AppCompatButton mResultsButtonView;
+
     private MainActivityPresenter mPresenter;
 
     private final String LUCKIEST_GUYS_FONT = "fonts/LuckiestGuy.ttf";
@@ -59,11 +61,14 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         mPreviousButtonView = getView(R.id.previousButtonView);
         mNextButtonView = getView(R.id.nextButtonView);
 
+        mResultsButtonView = getView(R.id.resultsButton);
+
         mPresenter = new MainActivityPresenter(this);
         mPresenter.updateViewTypeface(mStatementTextView, font);
         mPresenter.updateViewTypeface(mStatementsCountTextView, font);
         mPresenter.updateViewTypeface(mPreviousButtonView, font);
         mPresenter.updateViewTypeface(mNextButtonView, font);
+        mPresenter.updateViewTypeface(mResultsButtonView, font);
 
         mPresenter.updateStatementText(mCurrentStatement.getText());
         mPresenter.updateStatementCountText(mCurrentStatement.getNumber(), mStatements.max());
@@ -131,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         {
             mPresenter.setViewEnabled(mNextButtonView, false);
             mPresenter.updateTextColor(mNextButtonView, R.color.disabled_text_color);
+            mResultsButtonView.setVisibility(View.VISIBLE);
         }
     }
     @Override

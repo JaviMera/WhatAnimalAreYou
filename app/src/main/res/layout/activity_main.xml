@@ -37,7 +37,7 @@
         android:background="@drawable/spinner_background"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_weight="0.4"
         android:layout_centerInParent="true"
         android:layout_marginTop="15dp"/>
 
@@ -60,6 +60,25 @@
             android:textColor="@color/plain_white"
             android:onClick="nextClick"
             style="@style/NextButton" />
+
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/resultsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/results_button_text"
+            android:textColor="@color/plain_white"
+            android:textSize="20sp"
+            android:visibility="invisible"
+            android:background="@drawable/navigation_button_background"
+            />
+
+    </RelativeLayout>
 
 </LinearLayout>
