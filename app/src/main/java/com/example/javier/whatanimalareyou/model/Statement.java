@@ -10,13 +10,13 @@ public class Statement {
 
     private String mText;
     private int mNumber;
-    private String mChoice;
+    private int mChoicePosition;
 
     public Statement(String text, int number){
 
         mText = text;
         mNumber = number;
-        mChoice = "";
+        mChoicePosition = -1;
     }
 
     public String getText() {
@@ -27,11 +27,11 @@ public class Statement {
         return mNumber;
     }
 
-    public void setChoice(String choice) {
-        this.mChoice = choice;
+    public void setChoice(int choice) {
+        mChoicePosition = choice;
     }
 
-    public String getChoice() {
-        return mChoice;
+    public int getChoice() {
+        return mChoicePosition;
     }
 }

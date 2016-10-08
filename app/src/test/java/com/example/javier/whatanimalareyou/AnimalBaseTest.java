@@ -15,11 +15,11 @@ public class AnimalBaseTest {
 
     private AnimalBase animal;
     private String expectedName = "Tiger";
-    private int expectedValue = 15;
+    private int expectedValue = 5;
 
     @Before
     public void setUp() throws Exception {
-        animal = new Tiger(expectedName, expectedValue);
+        animal = new Tiger();
     }
 
     @Test

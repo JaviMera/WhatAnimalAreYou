@@ -16,9 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.javier.whatanimalareyou.R;
-import com.example.javier.whatanimalareyou.model.ChoiceEnum;
+import com.example.javier.whatanimalareyou.model.AnimalBase;
 import com.example.javier.whatanimalareyou.model.Statement;
 import com.example.javier.whatanimalareyou.model.StatementList;
+import com.example.javier.whatanimalareyou.model.StatementResult;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -79,10 +80,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         mChoiceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int choicePosition, long l) {
 
-                String choice = (String)adapterView.getItemAtPosition(i);
-                mCurrentStatement.setChoice(choice);
+                mCurrentStatement.setChoice(choicePosition);
             }
 
             @Override
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         mPresenter.updateStatementText(mCurrentStatement.getText());
         mPresenter.updateStatementCountText(mCurrentStatement.getNumber(), mStatements.max());
 
-        updateSpinnerSelectedItem(mChoiceSpinner, mCurrentStatement);
+        updateSpinnerSelectedItem(mCurrentStatement);
 
         if (mStatements.atFirst())
         {
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         mPresenter.updateStatementText(mCurrentStatement.getText());
         mPresenter.updateStatementCountText(mCurrentStatement.getNumber(), mStatements.max());
 
-        updateSpinnerSelectedItem(mChoiceSpinner, mCurrentStatement);
+        updateSpinnerSelectedItem(mCurrentStatement);
 
         if(mStatements.atLast())
         {
@@ -201,20 +201,16 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         mStatements.load(statements);
     }
 
-    private void updateSpinnerSelectedItem(Spinner choiceSpinner, Statement currentStatement) {
+    private void updateSpinnerSelectedItem(Statement currentStatement) {
 
-        ChoiceSpinnerAdapter adapter = (ChoiceSpinnerAdapter)choiceSpinner.getAdapter();
+        if(currentStatement.getChoice() == -1){
 
-        if(currentStatement.getChoice().equals("")){
-
-            String selectedChoice = adapter.getItem(0);
-            currentStatement.setChoice(selectedChoice);
+            currentStatement.setChoice(0);
             mPresenter.updateSpinnerSelectedItem(0);
         }
         else
         {
-            int currentStatementChoiceIndex = adapter.getPosition(currentStatement.getChoice());
-            mPresenter.updateSpinnerSelectedItem(currentStatementChoiceIndex);
+            mPresenter.updateSpinnerSelectedItem(currentStatement.getChoice());
         }
     }
 }

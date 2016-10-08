@@ -53,7 +53,7 @@ public class StatementList {
 
     public boolean atFirst() {
 
-        return mCurrent == 0;
+        return mCurrent <= 0;
     }
 
     public int max() {

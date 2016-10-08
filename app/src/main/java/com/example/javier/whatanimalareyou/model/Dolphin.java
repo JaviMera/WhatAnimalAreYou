@@ -6,7 +6,7 @@ package com.example.javier.whatanimalareyou.model;
 
 public class Dolphin extends AnimalBase {
 
-    public Dolphin(String name, int value) {
-        super(name, value);
+    public Dolphin() {
+        super("Dolphin", AnimalValue.get(Dolphin.class));
     }
 }

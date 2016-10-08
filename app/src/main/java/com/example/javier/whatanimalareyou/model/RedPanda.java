@@ -6,7 +6,7 @@ package com.example.javier.whatanimalareyou.model;
 
 public class RedPanda extends AnimalBase {
 
-    public RedPanda(String name, int value) {
-        super(name, value);
+    public RedPanda() {
+        super("Red Panda", AnimalValue.get(RedPanda.class));
     }
 }

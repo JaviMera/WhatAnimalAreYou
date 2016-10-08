@@ -1,11 +1,8 @@
 package com.example.javier.whatanimalareyou;
 
-import com.example.javier.whatanimalareyou.model.ChoiceEnum;
 import com.example.javier.whatanimalareyou.model.Statement;
-
 import junit.framework.Assert;
 
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -21,7 +18,7 @@ public class StatementTest {
         // Arrange
         String expectedText = "I'm more of a group type person";
         int expectedNumber = 1;
-        String expectedInitialChoice = "";
+        int expectedInitialChoice = -1;
 
         // Act
         statement = new Statement(expectedText, 1);
@@ -36,9 +33,8 @@ public class StatementTest {
     public void getChoiceReturnsChoiceSelected() throws Exception {
 
         // Arrange
-        String expectedChoice = "Totally Disagree";
+        int expectedChoice = 0;
         String expectedText = "I'm more of a group type person";
-        int expectedNumber = 1;
 
         // Act
         statement = new Statement(expectedText, 1);
