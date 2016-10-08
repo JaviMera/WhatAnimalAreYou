@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
 
         for(int statementNumber = 0 ; statementNumber < statements.max() ; statementNumber++)
         {
-            points += StatementResult.get(statementNumber, choices.get(statementNumber)).getValue();
+            points += StatementResult.get(statementNumber, choices.get(statementNumber));
         }
 
         return points;

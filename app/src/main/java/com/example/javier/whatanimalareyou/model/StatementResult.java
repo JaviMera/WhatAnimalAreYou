@@ -14,53 +14,53 @@ public class StatementResult {
     private static final int FOURTH_CHOICE = 3;
     private static final int FIFTH_CHOICE = 4;
 
-    private static final Dolphin dolphinInstance = new Dolphin();
-    private static final Tiger tigerInstance = new Tiger();
-    private static final Elephant elephantInstance = new Elephant();
-    private static final Monkey monkeyInstance = new Monkey();
-    private static final RedPanda redPandaInstance = new RedPanda();
+    private static final int dolphinValue = 1;
+    private static final int tigerValue = 2;
+    private static final int elephantValue = 3;
+    private static final int monkeyValue = 4;
+    private static final int redPandaValue = 5;
 
-    private static HashMap<Integer, AnimalBase> firstStatementResults = new HashMap<Integer, AnimalBase>(){
-        {put(FIRST_CHOICE, dolphinInstance);}
-        {put(SECOND_CHOICE, tigerInstance);}
-        {put(THIRD_CHOICE, elephantInstance);}
-        {put(FOURTH_CHOICE, monkeyInstance);}
-        {put(FIFTH_CHOICE, redPandaInstance);}
+    private static HashMap<Integer, Integer> firstStatementResults = new HashMap<Integer, Integer>(){
+        {put(FIRST_CHOICE, dolphinValue);}
+        {put(SECOND_CHOICE, tigerValue);}
+        {put(THIRD_CHOICE, elephantValue);}
+        {put(FOURTH_CHOICE, monkeyValue);}
+        {put(FIFTH_CHOICE, redPandaValue);}
     };
 
-    private static HashMap<Integer, AnimalBase> secondStatementResults = new HashMap<Integer, AnimalBase>(){
-        {put(SECOND_CHOICE, dolphinInstance);}
-        {put(FIFTH_CHOICE, tigerInstance);}
-        {put(THIRD_CHOICE, elephantInstance);}
-        {put(FOURTH_CHOICE, monkeyInstance);}
-        {put(FIRST_CHOICE, redPandaInstance);}
+    private static HashMap<Integer, Integer> secondStatementResults = new HashMap<Integer, Integer>(){
+        {put(SECOND_CHOICE, dolphinValue);}
+        {put(FIFTH_CHOICE, tigerValue);}
+        {put(THIRD_CHOICE, elephantValue);}
+        {put(FOURTH_CHOICE, monkeyValue);}
+        {put(FIRST_CHOICE, redPandaValue);}
     };
 
-    private static HashMap<Integer, AnimalBase> thirdStatementResults = new HashMap<Integer, AnimalBase>(){
-        {put(FIFTH_CHOICE, dolphinInstance);}
-        {put(THIRD_CHOICE, tigerInstance);}
-        {put(FIRST_CHOICE, elephantInstance);}
-        {put(FOURTH_CHOICE, monkeyInstance);}
-        {put(SECOND_CHOICE, redPandaInstance);}
+    private static HashMap<Integer, Integer> thirdStatementResults = new HashMap<Integer, Integer>(){
+        {put(FIFTH_CHOICE, dolphinValue);}
+        {put(THIRD_CHOICE, tigerValue);}
+        {put(FIRST_CHOICE, elephantValue);}
+        {put(FOURTH_CHOICE, monkeyValue);}
+        {put(SECOND_CHOICE, redPandaValue);}
     };
 
-    private static HashMap<Integer, AnimalBase> fourthStatementResults = new HashMap<Integer, AnimalBase>(){
-        {put(THIRD_CHOICE, dolphinInstance);}
-        {put(SECOND_CHOICE, tigerInstance);}
-        {put(FIRST_CHOICE, elephantInstance);}
-        {put(FIFTH_CHOICE, monkeyInstance);}
-        {put(FOURTH_CHOICE, redPandaInstance);}
+    private static HashMap<Integer, Integer> fourthStatementResults = new HashMap<Integer, Integer>(){
+        {put(THIRD_CHOICE, dolphinValue);}
+        {put(SECOND_CHOICE, tigerValue);}
+        {put(FIRST_CHOICE, elephantValue);}
+        {put(FIFTH_CHOICE, monkeyValue);}
+        {put(FOURTH_CHOICE, redPandaValue);}
     };
 
-    private static HashMap<Integer, AnimalBase> fifthStatementResults = new HashMap<Integer, AnimalBase>(){
-        {put(FOURTH_CHOICE, dolphinInstance);}
-        {put(SECOND_CHOICE, tigerInstance);}
-        {put(FIRST_CHOICE, elephantInstance);}
-        {put(FIFTH_CHOICE, monkeyInstance);}
-        {put(THIRD_CHOICE, redPandaInstance);}
+    private static HashMap<Integer, Integer> fifthStatementResults = new HashMap<Integer, Integer>(){
+        {put(FOURTH_CHOICE, dolphinValue);}
+        {put(SECOND_CHOICE, tigerValue);}
+        {put(FIRST_CHOICE, elephantValue);}
+        {put(FIFTH_CHOICE, monkeyValue);}
+        {put(THIRD_CHOICE, redPandaValue);}
     };
 
-    private static HashMap<Integer, HashMap<Integer, AnimalBase>> resultMap = new HashMap<Integer, HashMap<Integer, AnimalBase>>()
+    private static HashMap<Integer, HashMap<Integer, Integer>> resultMap = new HashMap<Integer, HashMap<Integer, Integer>>()
     {
         {put(0, firstStatementResults);}
         {put(1, secondStatementResults);}
@@ -69,7 +69,7 @@ public class StatementResult {
         {put(4, fifthStatementResults);}
     };
 
-    public static AnimalBase get(int statementNumber, int choice) {
+    public static int get(int statementNumber, int choice) {
 
         return resultMap
             .get(statementNumber)

@@ -25,11 +25,10 @@ public class AnimalBaseTest {
     @Test
     public void animalInit() throws Exception {
 
-        // Arrange
+        //  Act
         String actualName = animal.getName();
-        int actualValue = animal.getValue();
 
+        // Assert
         assertEquals(expectedName, actualName);
-        assertEquals(expectedValue, actualValue);
     }
 }

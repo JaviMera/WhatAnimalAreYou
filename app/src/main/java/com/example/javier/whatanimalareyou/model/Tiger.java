@@ -7,6 +7,6 @@ public class Tiger extends AnimalBase {
 
     public Tiger() {
 
-        super("Tiger", AnimalValue.get(Tiger.class));
+        super("Tiger");
     }
 }
