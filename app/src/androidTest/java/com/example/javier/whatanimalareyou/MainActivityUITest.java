@@ -4,7 +4,15 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatButton;
+import android.widget.TextView;
 
+import com.example.javier.whatanimalareyou.model.AnimalBase;
+import com.example.javier.whatanimalareyou.model.AnimalList;
+import com.example.javier.whatanimalareyou.model.animals.Dolphin;
+import com.example.javier.whatanimalareyou.model.animals.Elephant;
+import com.example.javier.whatanimalareyou.model.animals.Monkey;
+import com.example.javier.whatanimalareyou.model.animals.RedPanda;
+import com.example.javier.whatanimalareyou.model.animals.Tiger;
 import com.example.javier.whatanimalareyou.ui.MainActivity;
 
 import org.hamcrest.BaseMatcher;
@@ -12,6 +20,8 @@ import org.hamcrest.Description;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.List;
 
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
@@ -280,7 +290,9 @@ public class MainActivityUITest {
 
         // Arrange
         String[] choices = activityRule.getActivity().getResources().getStringArray(R.array.choices_array);
-        String expectedActivityText = activityRule.getActivity().getString(R.string.result_text);
+        String animalsToLookFor = createAnimalResultRegex();
+
+        String expectedTextRegex = "You are a " + animalsToLookFor;
 
         // Act
         for(String s : choices){
@@ -290,7 +302,27 @@ public class MainActivityUITest {
         onView(withId(R.id.resultsButton)).perform(click());
 
         // Assert
-        onView(withText(expectedActivityText)).check(matches(notNullValue()));
+        onView(withId(R.id.animalResultTextView)).check(matches(new TextViewTextRegexMatcher(expectedTextRegex)));
+    }
+
+    private String createAnimalResultRegex() {
+
+        String animalsToLookFor = "(";
+        List<AnimalBase> animals = createAnimalList().getAnimals();
+        for(int i = 0 ; i < animals.size() ; i++){
+
+            animalsToLookFor += animals.get(i).getName();
+            if( i < animals.size() - 1)
+                animalsToLookFor += "|";
+            else
+                animalsToLookFor += ")";
+        }
+
+        return animalsToLookFor;
+    }
+
+    private AnimalList createAnimalList() {
+        return new AnimalList(new Dolphin(), new Elephant(), new Monkey(), new RedPanda(), new Tiger());
     }
 
     private class ButtonTextColorMatcher extends BaseMatcher {
@@ -312,6 +344,27 @@ public class MainActivityUITest {
         @Override
         public void describeTo(Description description) {
             description.appendText("Text color must be " + mExpectedColor);
+        }
+    }
+
+    private class TextViewTextRegexMatcher extends BaseMatcher{
+
+        String mRegex;
+
+        public TextViewTextRegexMatcher(String regex) {
+            mRegex = regex;
+        }
+
+        @Override
+        public boolean matches(Object item) {
+            TextView tv = (TextView)item;
+
+            return tv.getText().toString().matches(mRegex);
+        }
+
+        @Override
+        public void describeTo(Description description) {
+
         }
     }
 }
