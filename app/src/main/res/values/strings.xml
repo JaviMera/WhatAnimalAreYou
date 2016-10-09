@@ -5,6 +5,7 @@
     <string name="results_button_text">See Results!</string>
     <string name="result_text">You are a</string>
 
+    <!-- Number of choices must always be divisible by the number of animals-->
     <string-array name="choices_array">
         <item>Totally Disagree</item>
         <item>Disagree</item>

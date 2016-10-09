@@ -4,20 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.menu.ExpandedMenuView;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.javier.whatanimalareyou.R;
 import com.example.javier.whatanimalareyou.model.AnimalBase;
+import com.example.javier.whatanimalareyou.model.AnimalFactory;
+import com.example.javier.whatanimalareyou.model.AnimalList;
 import com.example.javier.whatanimalareyou.model.Statement;
 import com.example.javier.whatanimalareyou.model.StatementList;
 import com.example.javier.whatanimalareyou.model.StatementResult;
@@ -29,7 +28,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements MainActivityView {
 
-    private StatementList mStatements;
+    private StatementList mStatementList;
     private Statement mCurrentStatement;
 
     private Spinner mChoiceSpinner;
@@ -50,11 +49,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
 
         Typeface font = Typeface.createFromAsset(getAssets(), LUCKIEST_GUYS_FONT);
 
-        mStatements = new StatementList();
+        mStatementList = new StatementList();
         String[] statementArray = getResources().getStringArray(R.array.statements_array);
         initializeStatementsList(statementArray);
 
-        mCurrentStatement = mStatements.get();
+        mCurrentStatement = mStatementList.get();
 
         mStatementTextView = getView(R.id.statementTextView);
         mStatementsCountTextView = getView(R.id.statementCountTextView);
@@ -67,7 +66,16 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
             @Override
             public void onClick(View v) {
 
-                int points = getPoints(mStatements);
+                int points = getPoints(mStatementList);
+                AnimalFactory factory = new AnimalFactory(
+                    mStatementList.getCount(),
+                    mChoiceSpinner.getAdapter().getCount(),
+                    AnimalList.getAnimals()
+                );
+
+                AnimalBase animal = factory.calculate(points);
+                Toast.makeText(v.getContext(),String.format(Locale.ENGLISH, "Points: %d = %s", points, animal.getName()), Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
                 startActivity(intent);
             }
@@ -81,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         mPresenter.updateViewTypeface(mResultsButtonView, font);
 
         mPresenter.updateStatementText(mCurrentStatement.getText());
-        mPresenter.updateStatementCountText(mCurrentStatement.getNumber(), mStatements.max());
+        mPresenter.updateStatementCountText(mCurrentStatement.getNumber(), mStatementList.max());
 
         String[] choicesArray = getResources().getStringArray(R.array.choices_array);
 
@@ -122,19 +130,19 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
 
     public void previousClick(View view) {
 
-        if (mStatements.atLast()) {
+        if (mStatementList.atLast()) {
 
             mPresenter.setViewEnabled(mNextButtonView, true);
             mPresenter.updateTextColor(mNextButtonView, R.color.plain_white);
         }
 
-        mCurrentStatement = mStatements.previous();
+        mCurrentStatement = mStatementList.previous();
         mPresenter.updateStatementText(mCurrentStatement.getText());
-        mPresenter.updateStatementCountText(mCurrentStatement.getNumber(), mStatements.max());
+        mPresenter.updateStatementCountText(mCurrentStatement.getNumber(), mStatementList.max());
 
         updateSpinnerSelectedItem(mCurrentStatement);
 
-        if (mStatements.atFirst())
+        if (mStatementList.atFirst())
         {
             mPresenter.setViewEnabled(mPreviousButtonView, false);
             mPresenter.updateTextColor(mPreviousButtonView, R.color.disabled_text_color);
@@ -143,19 +151,19 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
 
     public void nextClick(View view) {
 
-        if(mStatements.atFirst()){
+        if(mStatementList.atFirst()){
 
             mPresenter.updateTextColor(mPreviousButtonView, R.color.plain_white);
             mPresenter.setViewEnabled(mPreviousButtonView, true);
         }
 
-        mCurrentStatement = mStatements.get();
+        mCurrentStatement = mStatementList.get();
         mPresenter.updateStatementText(mCurrentStatement.getText());
-        mPresenter.updateStatementCountText(mCurrentStatement.getNumber(), mStatements.max());
+        mPresenter.updateStatementCountText(mCurrentStatement.getNumber(), mStatementList.max());
 
         updateSpinnerSelectedItem(mCurrentStatement);
 
-        if(mStatements.atLast())
+        if(mStatementList.atLast())
         {
             mPresenter.setViewEnabled(mNextButtonView, false);
             mPresenter.updateTextColor(mNextButtonView, R.color.disabled_text_color);
@@ -227,7 +235,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
             statements.add(new Statement(statementsText[i], i + 1));
         }
 
-        mStatements.load(statements);
+        mStatementList.load(statements);
     }
 
     private void updateSpinnerSelectedItem(Statement currentStatement) {
