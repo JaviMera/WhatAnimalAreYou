@@ -7,13 +7,19 @@ package com.example.javier.whatanimalareyou.model;
 public abstract class AnimalBase {
 
     protected String mName;
+    protected int mPointsWorth;
 
-    protected AnimalBase(String name){
+    protected AnimalBase(String name, int points){
 
         mName = name;
+        mPointsWorth = points;
     }
 
     public String getName(){
         return mName;
+    }
+
+    public int getPoints() {
+        return mPointsWorth;
     }
 }

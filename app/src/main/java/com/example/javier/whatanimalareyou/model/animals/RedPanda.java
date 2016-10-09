@@ -9,6 +9,6 @@ import com.example.javier.whatanimalareyou.model.AnimalBase;
 public class RedPanda extends AnimalBase {
 
     public RedPanda() {
-        super("Red Panda");
+        super("Red Panda", 4);
     }
 }

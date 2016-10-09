@@ -17,9 +17,14 @@ import com.example.javier.whatanimalareyou.R;
 import com.example.javier.whatanimalareyou.model.AnimalBase;
 import com.example.javier.whatanimalareyou.model.AnimalFactory;
 import com.example.javier.whatanimalareyou.model.AnimalList;
-import com.example.javier.whatanimalareyou.model.Statement;
-import com.example.javier.whatanimalareyou.model.StatementList;
-import com.example.javier.whatanimalareyou.model.StatementResult;
+import com.example.javier.whatanimalareyou.model.animals.Dolphin;
+import com.example.javier.whatanimalareyou.model.animals.Elephant;
+import com.example.javier.whatanimalareyou.model.animals.Monkey;
+import com.example.javier.whatanimalareyou.model.animals.RedPanda;
+import com.example.javier.whatanimalareyou.model.animals.Tiger;
+import com.example.javier.whatanimalareyou.model.statements.Statement;
+import com.example.javier.whatanimalareyou.model.statements.StatementAnswerKey;
+import com.example.javier.whatanimalareyou.model.statements.StatementList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,6 +33,8 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements MainActivityView {
 
+    private AnimalList mAnimalList;
+    private StatementAnswerKey mStatementAnswerKey;
     private StatementList mStatementList;
     private Statement mCurrentStatement;
 
@@ -49,6 +56,21 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
 
         Typeface font = Typeface.createFromAsset(getAssets(), LUCKIEST_GUYS_FONT);
 
+        mAnimalList = new AnimalList(
+                new Dolphin(),
+                new Elephant(),
+                new Monkey(),
+                new RedPanda(),
+                new Tiger());
+
+        List<int[]> answerKey = new ArrayList<>();
+        answerKey.add(getResources().getIntArray(R.array.first_statement_points));
+        answerKey.add(getResources().getIntArray(R.array.second_statement_points));
+        answerKey.add(getResources().getIntArray(R.array.third_statement_points));
+        answerKey.add(getResources().getIntArray(R.array.fourth_statement_points));
+        answerKey.add(getResources().getIntArray(R.array.fifth_statement_points));
+
+        mStatementAnswerKey = new StatementAnswerKey(answerKey, mAnimalList.getPoints());
         mStatementList = new StatementList();
         String[] statementArray = getResources().getStringArray(R.array.statements_array);
         initializeStatementsList(statementArray);
@@ -66,16 +88,15 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
             @Override
             public void onClick(View v) {
 
-                int points = getPoints(mStatementList);
+                int points = getPoints(mStatementList.getChoices());
+
                 AnimalFactory factory = new AnimalFactory(
                     mStatementList.getCount(),
                     mChoiceSpinner.getAdapter().getCount(),
-                    AnimalList.getAnimals()
+                    mAnimalList.getAnimals()
                 );
 
                 AnimalBase animal = factory.calculate(points);
-                Toast.makeText(v.getContext(),String.format(Locale.ENGLISH, "Points: %d = %s", points, animal.getName()), Toast.LENGTH_SHORT).show();
-
                 Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
                 startActivity(intent);
             }
@@ -115,14 +136,13 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         });
     }
 
-    private int getPoints (StatementList statements) {
+    private int getPoints (List<Integer> statementsAnwers) {
 
         int points = 0;
-        List<Integer> choices = statements.getChoices();
-
-        for(int statementNumber = 0 ; statementNumber < statements.max() ; statementNumber++)
+        for(int statementNumber = 0 ; statementNumber < statementsAnwers.size() ; statementNumber++)
         {
-            points += StatementResult.get(statementNumber, choices.get(statementNumber));
+            int answer = statementsAnwers.get(statementNumber);
+            points += mStatementAnswerKey.getPoints(statementNumber, answer);
         }
 
         return points;

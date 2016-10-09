@@ -1,4 +1,4 @@
-package com.example.javier.whatanimalareyou.model;
+package com.example.javier.whatanimalareyou.model.statements;
 
 import java.util.ArrayList;
 import java.util.List;

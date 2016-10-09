@@ -15,7 +15,6 @@ public class AnimalBaseTest {
 
     private AnimalBase animal;
     private String expectedName = "Tiger";
-    private int expectedValue = 5;
 
     @Before
     public void setUp() throws Exception {

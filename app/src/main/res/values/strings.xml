@@ -5,7 +5,6 @@
     <string name="results_button_text">See Results!</string>
     <string name="result_text">You are a</string>
 
-    <!-- Number of choices must always be divisible by the number of animals-->
     <string-array name="choices_array">
         <item>Totally Disagree</item>
         <item>Disagree</item>
@@ -21,4 +20,45 @@
         <item>Out of all sports, swimming is the least that I\'m interested in</item>
         <item>Global Warming is a Chinese hoax.</item>
     </string-array>
+
+    <integer-array name="first_statement_points">
+        <item>4</item>
+        <item>1</item>
+        <item>0</item>
+        <item>3</item>
+        <item>2</item>
+    </integer-array>
+
+    <integer-array name="second_statement_points">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </integer-array>
+
+    <integer-array name="third_statement_points">
+        <item>4</item>
+        <item>2</item>
+        <item>3</item>
+        <item>0</item>
+        <item>1</item>
+    </integer-array>
+
+    <integer-array name="fourth_statement_points">
+        <item>3</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+    </integer-array>
+
+    <integer-array name="fifth_statement_points">
+        <item>1</item>
+        <item>0</item>
+        <item>3</item>
+        <item>4</item>
+        <item>2</item>
+    </integer-array>
+
 </resources>

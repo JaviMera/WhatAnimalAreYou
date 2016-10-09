@@ -21,7 +21,7 @@ public class AnimalFactory extends ResultFactory {
         int animalRange = totalPoints / animals.size();
         int counter = 0;
 
-        for(AnimalBase animal : AnimalList.getAnimals()){
+        for(AnimalBase animal : animals){
             counter += animalRange;
             pointsRangeMap.put(counter, animal);
         }
