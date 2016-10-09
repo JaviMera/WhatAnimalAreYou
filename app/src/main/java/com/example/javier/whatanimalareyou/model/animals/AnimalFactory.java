@@ -1,9 +1,8 @@
-package com.example.javier.whatanimalareyou.model;
+package com.example.javier.whatanimalareyou.model.animals;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * Created by Javier on 10/8/2016.

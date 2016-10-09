@@ -6,13 +6,13 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatButton;
 import android.widget.TextView;
 
-import com.example.javier.whatanimalareyou.model.AnimalBase;
-import com.example.javier.whatanimalareyou.model.AnimalList;
-import com.example.javier.whatanimalareyou.model.animals.Dolphin;
-import com.example.javier.whatanimalareyou.model.animals.Elephant;
-import com.example.javier.whatanimalareyou.model.animals.Monkey;
-import com.example.javier.whatanimalareyou.model.animals.RedPanda;
-import com.example.javier.whatanimalareyou.model.animals.Tiger;
+import com.example.javier.whatanimalareyou.model.animals.AnimalBase;
+import com.example.javier.whatanimalareyou.model.animals.AnimalList;
+import com.example.javier.whatanimalareyou.model.animals.concretes.Dolphin;
+import com.example.javier.whatanimalareyou.model.animals.concretes.Elephant;
+import com.example.javier.whatanimalareyou.model.animals.concretes.Monkey;
+import com.example.javier.whatanimalareyou.model.animals.concretes.RedPanda;
+import com.example.javier.whatanimalareyou.model.animals.concretes.Tiger;
 import com.example.javier.whatanimalareyou.ui.MainActivity;
 
 import org.hamcrest.BaseMatcher;

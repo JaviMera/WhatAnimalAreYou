@@ -1,7 +1,7 @@
 package com.example.javier.whatanimalareyou;
 
-import com.example.javier.whatanimalareyou.model.AnimalBase;
-import com.example.javier.whatanimalareyou.model.animals.Tiger;
+import com.example.javier.whatanimalareyou.model.animals.AnimalBase;
+import com.example.javier.whatanimalareyou.model.animals.concretes.Tiger;
 
 import org.junit.Before;
 import org.junit.Test;

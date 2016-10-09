@@ -1,17 +1,8 @@
-package com.example.javier.whatanimalareyou.model;
-
-import com.example.javier.whatanimalareyou.model.animals.Dolphin;
-import com.example.javier.whatanimalareyou.model.animals.Elephant;
-import com.example.javier.whatanimalareyou.model.animals.Monkey;
-import com.example.javier.whatanimalareyou.model.animals.RedPanda;
-import com.example.javier.whatanimalareyou.model.animals.Tiger;
+package com.example.javier.whatanimalareyou.model.animals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * Created by Javier on 10/8/2016.

@@ -1,4 +1,6 @@
-package com.example.javier.whatanimalareyou.model.statements;
+package com.example.javier.whatanimalareyou;
+
+import com.example.javier.whatanimalareyou.model.statements.StatementAnswerKey;
 
 import junit.framework.Assert;
 
