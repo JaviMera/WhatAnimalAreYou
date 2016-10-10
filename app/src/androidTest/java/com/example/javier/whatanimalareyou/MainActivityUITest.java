@@ -298,7 +298,7 @@ public class MainActivityUITest {
         String[] choices = activityRule.getActivity().getResources().getStringArray(R.array.choices_array);
         String animalsToLookFor = createAnimalResultRegex();
 
-        String expectedTextRegex = "You are a " + animalsToLookFor;
+        String expectedTextRegex = "You are a " + animalsToLookFor + "!";
         Integer[] imageIds = {R.drawable.dolphin, R.drawable.elephant, R.drawable.monkey, R.drawable.redpanda, R.drawable.tiger};
 
         // Act

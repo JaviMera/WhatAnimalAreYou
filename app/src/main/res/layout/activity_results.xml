@@ -16,27 +16,31 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <TextView
-        android:id="@+id/animalResultTextView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"/>
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:background="@drawable/rounded_background_container">
+        android:background="@drawable/rounded_background_container"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/animalResultTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="@color/plain_white"
+            android:layout_margin="10dp"/>
 
         <ImageView
             android:id="@+id/animalResultImageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/animal_image_background"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -46,6 +50,7 @@
         android:padding="30dp">
 
         <Button
+            android:id="@+id/startOverButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/start_over_button_text"

@@ -3,7 +3,7 @@
     <string name="next_button_text">next</string>
     <string name="previous_button_text">previous</string>
     <string name="results_button_text">See Results!</string>
-    <string name="result_text">You are a</string>
+    <string name="result_text">You are a %1$s!</string>
     <string name="start_over_button_text">Start Over</string>
 
     <string-array name="choices_array">
