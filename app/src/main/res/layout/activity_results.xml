@@ -14,7 +14,10 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:paddingBottom="10dp"
+        android:scaleType="fitStart"
+        android:src="@mipmap/launcher"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,7 +47,7 @@
                 android:layout_marginLeft="20dp"
                 android:clickable="false"
                 android:maxLength="6"
-                android:textColor="@color/navigation_button_enabled"
+                android:textColor="@color/container_background_color"
                 android:background="@drawable/caption_background"/>
         </FrameLayout>
 

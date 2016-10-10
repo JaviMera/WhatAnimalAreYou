@@ -9,12 +9,13 @@
     android:orientation="vertical"
     android:background="@android:color/background_light">
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="App image goes here"
-        android:gravity="center"/>
+        android:paddingBottom="10dp"
+        android:scaleType="fitStart"
+        android:src="@mipmap/launcher"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

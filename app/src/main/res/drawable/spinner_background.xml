@@ -10,7 +10,7 @@
                 android:color="@android:color/background_light" />
 
             <stroke
-                android:color="@color/statement_background_color"
+                android:color="@color/container_background_color"
                 android:width="2dp" />
 
             <corners android:radius="5dp" />
