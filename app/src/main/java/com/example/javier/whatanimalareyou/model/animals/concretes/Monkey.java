@@ -8,7 +8,7 @@ import com.example.javier.whatanimalareyou.model.animals.AnimalBase;
 
 public class Monkey extends AnimalBase {
 
-    public Monkey() {
-        super("Monkey", 3);
+    public Monkey(int imageId) {
+        super("Monkey", 3, imageId);
     }
 }

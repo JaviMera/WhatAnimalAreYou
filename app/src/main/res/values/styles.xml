@@ -44,4 +44,9 @@
     <style name="NextButton" parent="NavButton">
         <item name="android:text">@string/next_button_text</item>
     </style>
+
+    <style name="StarOverButton" parent="NavButton">
+        <item name="android:text">@string/start_over_button_text</item>
+        <item name="android:textColor">@color/plain_white</item>
+    </style>
 </resources>

@@ -1,9 +1,14 @@
 package com.example.javier.whatanimalareyou;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.javier.whatanimalareyou.model.animals.AnimalBase;
@@ -17,6 +22,7 @@ import com.example.javier.whatanimalareyou.ui.MainActivity;
 
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -293,6 +299,7 @@ public class MainActivityUITest {
         String animalsToLookFor = createAnimalResultRegex();
 
         String expectedTextRegex = "You are a " + animalsToLookFor;
+        Integer[] imageIds = {R.drawable.dolphin, R.drawable.elephant, R.drawable.monkey, R.drawable.redpanda, R.drawable.tiger};
 
         // Act
         for(String s : choices){
@@ -303,12 +310,14 @@ public class MainActivityUITest {
 
         // Assert
         onView(withId(R.id.animalResultTextView)).check(matches(new TextViewTextRegexMatcher(expectedTextRegex)));
+        onView(withId(R.id.animalResultImageView)).check(matches(new ImageViewMatcher(imageIds)));
     }
 
     private String createAnimalResultRegex() {
 
         String animalsToLookFor = "(";
-        List<AnimalBase> animals = createAnimalList().getAnimals();
+        List<AnimalBase> animals = createAnimalList(1).getAnimals();
+
         for(int i = 0 ; i < animals.size() ; i++){
 
             animalsToLookFor += animals.get(i).getName();
@@ -321,8 +330,14 @@ public class MainActivityUITest {
         return animalsToLookFor;
     }
 
-    private AnimalList createAnimalList() {
-        return new AnimalList(new Dolphin(), new Elephant(), new Monkey(), new RedPanda(), new Tiger());
+    private AnimalList createAnimalList(int defaultId) {
+
+        return new AnimalList(
+            new Dolphin(defaultId),
+            new Elephant(defaultId),
+            new Monkey(defaultId),
+            new RedPanda(defaultId),
+            new Tiger(defaultId));
     }
 
     private class ButtonTextColorMatcher extends BaseMatcher {
@@ -366,5 +381,29 @@ public class MainActivityUITest {
         public void describeTo(Description description) {
 
         }
+    }
+
+    private class ImageViewMatcher extends BaseMatcher {
+
+        private Integer[] mDrawableIds;
+
+        public ImageViewMatcher(Integer[] drawableIds) {
+            mDrawableIds = drawableIds;
+        }
+
+        @Override
+        public boolean matches(Object item) {
+
+            ImageView image = (ImageView)item;
+
+            return image.getDrawable().isVisible();
+        }
+
+        @Override
+        public void describeTo(Description description) {
+
+            description.appendText("Image view does not contain either of the following ids " + mDrawableIds);
+        }
+
     }
 }

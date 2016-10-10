@@ -57,11 +57,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         Typeface font = Typeface.createFromAsset(getAssets(), LUCKIEST_GUYS_FONT);
 
         mAnimalList = new AnimalList(
-                new Dolphin(),
-                new Elephant(),
-                new Monkey(),
-                new RedPanda(),
-                new Tiger());
+                new Dolphin(R.drawable.dolphin),
+                new Elephant(R.drawable.elephant),
+                new Monkey(R.drawable.monkey),
+                new RedPanda(R.drawable.redpanda),
+                new Tiger(R.drawable.tiger));
 
         List<int[]> answerKey = new ArrayList<>();
         answerKey.add(getResources().getIntArray(R.array.first_statement_points));
@@ -100,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
                 Toast.makeText(v.getContext(), String.format(Locale.ENGLISH, "Points: %d", points), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
                 intent.putExtra("animal", animal.getName());
+                intent.putExtra("imageId", animal.getImageId());
                 startActivity(intent);
             }
         });
@@ -133,7 +134,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
     }

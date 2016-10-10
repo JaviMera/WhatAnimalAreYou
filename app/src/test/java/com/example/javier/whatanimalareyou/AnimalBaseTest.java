@@ -15,10 +15,11 @@ public class AnimalBaseTest {
 
     private AnimalBase animal;
     private String expectedName = "Tiger";
+    private int expectedImageId = 1234;
 
     @Before
     public void setUp() throws Exception {
-        animal = new Tiger();
+        animal = new Tiger(expectedImageId);
     }
 
     @Test
@@ -26,8 +27,10 @@ public class AnimalBaseTest {
 
         //  Act
         String actualName = animal.getName();
+        int actualImageId = animal.getImageId();
 
         // Assert
         assertEquals(expectedName, actualName);
+        assertEquals(expectedImageId, actualImageId);
     }
 }

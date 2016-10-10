@@ -7,5 +7,5 @@ import com.example.javier.whatanimalareyou.model.animals.AnimalBase;
  */
 public class Tiger extends AnimalBase {
 
-    public Tiger() { super("Tiger", 5);}
+    public Tiger(int imageId) { super("Tiger", 5, imageId);}
 }
