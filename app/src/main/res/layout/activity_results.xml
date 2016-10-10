@@ -23,22 +23,30 @@
         android:background="@drawable/rounded_background_container"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/animalResultTextView"
-            android:layout_width="match_parent"
+        <FrameLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:textColor="@color/plain_white"
-            android:layout_margin="10dp"/>
+            android:layout_gravity="center">
 
-        <ImageView
-            android:id="@+id/animalResultImageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/animal_image_background"/>
+            <ImageView
+                android:id="@+id/animalResultImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/elephant"/>
+
+            <Button
+                android:id="@+id/captionButtonView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
+                android:clickable="false"
+                android:maxLength="6"
+                android:textColor="@color/navigation_button_enabled"
+                android:background="@drawable/caption_background"/>
+        </FrameLayout>
 
     </LinearLayout>
 

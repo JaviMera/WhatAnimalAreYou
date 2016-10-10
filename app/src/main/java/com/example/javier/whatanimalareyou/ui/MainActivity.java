@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
                 );
 
                 AnimalBase animal = factory.calculate(points);
-                Toast.makeText(v.getContext(), String.format(Locale.ENGLISH, "Points: %d", points), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
                 intent.putExtra("animal", animal.getName());
                 intent.putExtra("imageId", animal.getImageId());

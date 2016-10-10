@@ -18,12 +18,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.javier.whatanimalareyou.R;
 
+import java.util.Locale;
+
 public class ResultsActivity extends AppCompatActivity {
 
-    private TextView mAnimalResultTextView;
     private ImageView mAnimalResultImageView;
     private AppCompatButton mStartOverButton;
 
@@ -36,15 +38,15 @@ public class ResultsActivity extends AppCompatActivity {
 
         Typeface font = Typeface.createFromAsset(getAssets(), LUCKIEST_GUYS_FONT);
 
-        mAnimalResultTextView = getView(R.id.animalResultTextView);
-        mAnimalResultTextView.setTypeface(font);
-
         mAnimalResultImageView = getView(R.id.animalResultImageView);
         String animalName = getIntent().getExtras().getString("animal");
         Integer animalImageId = getIntent().getExtras().getInt("imageId");
 
         String animalResultText = getString(R.string.result_text);
-        mAnimalResultTextView.setText(String.format(animalResultText, animalName));
+
+        Toast.makeText(this,
+            String.format(Locale.ENGLISH, animalResultText, animalName),
+            Toast.LENGTH_SHORT).show();
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), animalImageId);
         mAnimalResultImageView.setImageBitmap(bitmap);

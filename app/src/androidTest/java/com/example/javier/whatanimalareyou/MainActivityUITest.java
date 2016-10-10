@@ -298,7 +298,6 @@ public class MainActivityUITest {
         String[] choices = activityRule.getActivity().getResources().getStringArray(R.array.choices_array);
         String animalsToLookFor = createAnimalResultRegex();
 
-        String expectedTextRegex = "You are a " + animalsToLookFor + "!";
         Integer[] imageIds = {R.drawable.dolphin, R.drawable.elephant, R.drawable.monkey, R.drawable.redpanda, R.drawable.tiger};
 
         // Act
@@ -309,7 +308,6 @@ public class MainActivityUITest {
         onView(withId(R.id.resultsButton)).perform(click());
 
         // Assert
-        onView(withId(R.id.animalResultTextView)).check(matches(new TextViewTextRegexMatcher(expectedTextRegex)));
         onView(withId(R.id.animalResultImageView)).check(matches(new ImageViewMatcher(imageIds)));
     }
 
@@ -359,27 +357,6 @@ public class MainActivityUITest {
         @Override
         public void describeTo(Description description) {
             description.appendText("Text color must be " + mExpectedColor);
-        }
-    }
-
-    private class TextViewTextRegexMatcher extends BaseMatcher{
-
-        String mRegex;
-
-        public TextViewTextRegexMatcher(String regex) {
-            mRegex = regex;
-        }
-
-        @Override
-        public boolean matches(Object item) {
-            TextView tv = (TextView)item;
-
-            return tv.getText().toString().matches(mRegex);
-        }
-
-        @Override
-        public void describeTo(Description description) {
-
         }
     }
 
