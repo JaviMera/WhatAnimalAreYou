@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.example.javier.whatanimalareyou.ui.MainActivityPresenter;
 import com.example.javier.whatanimalareyou.ui.MainActivityView;
+import com.example.javier.whatanimalareyou.ui.ResultsActivity;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -130,5 +131,19 @@ public class MainActivityPresenterTest {
 
         // Assert
         Mockito.verify(mView).updateSpinnerSelectedItem(choicePosition);
+    }
+
+    @Test
+    public void launchResultsActivity() throws Exception {
+
+        // Arrange
+        String animalName = "Tiger";
+        int imageId = R.drawable.tiger;
+
+        // Act
+        mPresenter.launchResultsActivity(animalName, imageId);
+
+        // Assert
+        Mockito.verify(mView).launchResultsActivity(animalName, imageId);
     }
 }

@@ -86,10 +86,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
                 );
 
                 AnimalBase animal = factory.calculate(points);
-                Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
-                intent.putExtra("animal", animal.getName());
-                intent.putExtra("imageId", animal.getImageId());
-                startActivity(intent);
+                mPresenter.launchResultsActivity(animal.getName(), animal.getImageId());
             }
         });
 
@@ -208,6 +205,15 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     @Override
     public void updateSpinnerSelectedItem(int choicePosition) {
         mChoiceSpinner.setSelection(choicePosition);
+    }
+
+    @Override
+    public void launchResultsActivity(String animalName, int imageId) {
+
+        Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
+        intent.putExtra("animal", animalName);
+        intent.putExtra("imageId", imageId);
+        startActivity(intent);
     }
 
     @Override
