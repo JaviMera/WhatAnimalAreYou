@@ -1,39 +1,28 @@
 package com.example.javier.whatanimalareyou.model.animals;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Created by Javier on 10/8/2016.
  */
 
-public class AnimalFactory extends ResultFactory {
+public class AnimalFactory extends AbstractFactory {
 
-    private Map<Integer, AnimalBase> pointsRangeMap;
+    private Set<AnimalBase> mAnimalSet;
 
-    public AnimalFactory(int numberOfStatements, int numberOfChoices, List<AnimalBase> animals){
+    public AnimalFactory(List<AnimalBase> animals){
 
-        pointsRangeMap = new LinkedHashMap<>();
-
-        int totalPoints = numberOfStatements * numberOfChoices;
-        int animalRange = totalPoints / animals.size();
-        int counter = 0;
-
-        for(AnimalBase animal : animals){
-            counter += animalRange;
-            pointsRangeMap.put(counter, animal);
-        }
+        mAnimalSet = new TreeSet<>(animals);
     }
 
     @Override
     protected AnimalBase selectAnimal(int points) {
 
-        for(Integer key : pointsRangeMap.keySet()) {
-
-            if(points <= key){
-                return pointsRangeMap.get(key);
-            }
+        for(AnimalBase animal : mAnimalSet){
+            if(points < animal.totalPoints())
+                return animal;
         }
 
         return null;

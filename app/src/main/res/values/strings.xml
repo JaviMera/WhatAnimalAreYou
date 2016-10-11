@@ -21,45 +21,4 @@
         <item>Out of all sports, swimming is the least that I\'m interested in</item>
         <item>Global Warming is a Chinese hoax.</item>
     </string-array>
-
-    <integer-array name="first_statement_points">
-        <item>4</item>
-        <item>1</item>
-        <item>0</item>
-        <item>3</item>
-        <item>2</item>
-    </integer-array>
-
-    <integer-array name="second_statement_points">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-    </integer-array>
-
-    <integer-array name="third_statement_points">
-        <item>4</item>
-        <item>2</item>
-        <item>3</item>
-        <item>0</item>
-        <item>1</item>
-    </integer-array>
-
-    <integer-array name="fourth_statement_points">
-        <item>3</item>
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>4</item>
-    </integer-array>
-
-    <integer-array name="fifth_statement_points">
-        <item>1</item>
-        <item>0</item>
-        <item>3</item>
-        <item>4</item>
-        <item>2</item>
-    </integer-array>
-
 </resources>

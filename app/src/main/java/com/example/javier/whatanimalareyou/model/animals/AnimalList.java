@@ -17,16 +17,6 @@ public class AnimalList {
         mAnimals = Arrays.asList(animals);
     }
 
-    public List<Integer> getPoints(){
-
-        List<Integer> points = new ArrayList<>();
-        for(AnimalBase animal : mAnimals){
-            points.add(animal.getPoints());
-        }
-
-        return points;
-    }
-
     public List<AnimalBase> getAnimals() {
 
         return mAnimals;

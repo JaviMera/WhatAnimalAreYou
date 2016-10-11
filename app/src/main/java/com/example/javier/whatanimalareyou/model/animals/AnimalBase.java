@@ -1,19 +1,23 @@
 package com.example.javier.whatanimalareyou.model.animals;
 
+import android.support.annotation.NonNull;
+
+import java.util.List;
+
 /**
  * Created by Javier on 10/4/2016.
  */
 
-public abstract class AnimalBase {
+public abstract class AnimalBase implements Comparable<AnimalBase> {
 
-    protected String mName;
-    protected int mPointsWorth;
-    protected int mImageId;
+    private String mName;
+    private int mImageId;
 
-    protected AnimalBase(String name, int points, int imageId){
+    protected List<Integer> mPointsPerStatement;
+
+    protected AnimalBase(String name, int imageId){
 
         mName = name;
-        mPointsWorth = points;
         mImageId = imageId;
     }
 
@@ -21,11 +25,33 @@ public abstract class AnimalBase {
         return mName;
     }
 
-    public int getPoints() {
-        return mPointsWorth;
-    }
-
     public int getImageId() {
         return mImageId;
+    }
+
+    public int totalPoints(){
+
+        int points = 0;
+        for(Integer p : mPointsPerStatement){
+            points += p;
+        }
+
+        return points;
+    }
+
+    @NonNull
+    @Override
+    public int compareTo(AnimalBase otherAnimal) {
+
+        if(totalPoints() < otherAnimal.totalPoints()){
+
+            return -1;
+        }
+        else if(totalPoints() > otherAnimal.totalPoints()){
+
+            return 1;
+        }
+
+        return 0;
     }
 }

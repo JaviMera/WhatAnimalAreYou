@@ -1,6 +1,10 @@
 package com.example.javier.whatanimalareyou.model.animals.concretes;
 
 import com.example.javier.whatanimalareyou.model.animals.AnimalBase;
+import com.example.javier.whatanimalareyou.model.choices.ChoicePoints;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Javier on 10/4/2016.
@@ -9,6 +13,16 @@ import com.example.javier.whatanimalareyou.model.animals.AnimalBase;
 public class Monkey extends AnimalBase {
 
     public Monkey(int imageId) {
-        super("Monkey", 3, imageId);
+        super("Monkey", imageId);
+
+        mPointsPerStatement = new ArrayList<Integer>() {
+            {
+                add(ChoicePoints.ONE);
+                add(ChoicePoints.TWO);
+                add(ChoicePoints.FOUR);
+                add(ChoicePoints.THREE);
+                add(ChoicePoints.ONE);
+            }
+        };
     }
 }

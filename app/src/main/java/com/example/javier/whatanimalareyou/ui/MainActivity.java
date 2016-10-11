@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.javier.whatanimalareyou.R;
 import com.example.javier.whatanimalareyou.model.animals.AnimalBase;
@@ -23,7 +22,6 @@ import com.example.javier.whatanimalareyou.model.animals.concretes.Monkey;
 import com.example.javier.whatanimalareyou.model.animals.concretes.RedPanda;
 import com.example.javier.whatanimalareyou.model.animals.concretes.Tiger;
 import com.example.javier.whatanimalareyou.model.statements.Statement;
-import com.example.javier.whatanimalareyou.model.statements.StatementAnswerKey;
 import com.example.javier.whatanimalareyou.model.statements.StatementList;
 
 import java.util.ArrayList;
@@ -34,7 +32,6 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity implements MainActivityView {
 
     private AnimalList mAnimalList;
-    private StatementAnswerKey mStatementAnswerKey;
     private StatementList mStatementList;
     private Statement mCurrentStatement;
 
@@ -63,14 +60,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
                 new RedPanda(R.drawable.redpanda),
                 new Tiger(R.drawable.tiger));
 
-        List<int[]> answerKey = new ArrayList<>();
-        answerKey.add(getResources().getIntArray(R.array.first_statement_points));
-        answerKey.add(getResources().getIntArray(R.array.second_statement_points));
-        answerKey.add(getResources().getIntArray(R.array.third_statement_points));
-        answerKey.add(getResources().getIntArray(R.array.fourth_statement_points));
-        answerKey.add(getResources().getIntArray(R.array.fifth_statement_points));
+        final String[] choicesArray = getResources().getStringArray(R.array.choices_array);
 
-        mStatementAnswerKey = new StatementAnswerKey(answerKey, mAnimalList.getPoints());
         mStatementList = new StatementList();
         String[] statementArray = getResources().getStringArray(R.array.statements_array);
         initializeStatementsList(statementArray);
@@ -88,11 +79,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
             @Override
             public void onClick(View v) {
 
-                int points = getPoints(mStatementList.getChoices());
+                int points = getUserPoints(mStatementList.getChoices());
 
                 AnimalFactory factory = new AnimalFactory(
-                    mStatementList.getCount(),
-                    mChoiceSpinner.getAdapter().getCount(),
                     mAnimalList.getAnimals()
                 );
 
@@ -114,7 +103,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         mPresenter.updateStatementText(mCurrentStatement.getText());
         mPresenter.updateStatementCountText(mCurrentStatement.getNumber(), mStatementList.max());
 
-        String[] choicesArray = getResources().getStringArray(R.array.choices_array);
 
         mChoiceSpinner = getView(R.id.choiceSpinnerView);
         mPresenter.setSpinnerAdapterView(
@@ -137,13 +125,13 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         });
     }
 
-    private int getPoints (List<Integer> statementsAnwers) {
+    private int getUserPoints(List<Integer> statementsAnwers) {
 
         int points = 0;
         for(int statementNumber = 0 ; statementNumber < statementsAnwers.size() ; statementNumber++)
         {
             int answer = statementsAnwers.get(statementNumber);
-            points += mStatementAnswerKey.getPoints(statementNumber, answer);
+            points += answer + 1;
         }
 
         return points;
