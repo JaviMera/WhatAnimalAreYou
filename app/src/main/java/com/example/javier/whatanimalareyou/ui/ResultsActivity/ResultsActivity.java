@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.javier.whatanimalareyou.R;
 import com.example.javier.whatanimalareyou.ui.ActivityBase;
+import com.example.javier.whatanimalareyou.ui.ActivityExtras;
 import com.example.javier.whatanimalareyou.ui.MainActivity.MainActivity;
 
 import java.util.Locale;
@@ -35,12 +36,12 @@ public class ResultsActivity extends ActivityBase implements ResultsActivityView
 
         mPresenter = new ResultsActivityPresenter(this);
 
-        String animalName = getIntent().getExtras().getString("animal");
+        String animalName = getIntent().getExtras().getString(ActivityExtras.ANIMAL_NAME_KEY);
         String animalResultText = getString(R.string.result_text);
         String formatedText = String.format(Locale.ENGLISH, animalResultText, animalName);
         mPresenter.showToastWithAnimalName(formatedText);
 
-        Integer animalImageId = getIntent().getExtras().getInt("imageId");
+        Integer animalImageId = getIntent().getExtras().getInt(ActivityExtras.ANIMAL_IMAGE_ID_KEY);
         mAnimalResultImageView = getView(R.id.animalResultImageView);
         mPresenter.updateAnimalResultImageView(animalImageId);
 

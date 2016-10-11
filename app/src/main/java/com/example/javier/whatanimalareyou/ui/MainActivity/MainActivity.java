@@ -29,6 +29,7 @@ import com.example.javier.whatanimalareyou.model.animals.concretes.WhiteShark;
 import com.example.javier.whatanimalareyou.model.statements.Statement;
 import com.example.javier.whatanimalareyou.model.statements.StatementList;
 import com.example.javier.whatanimalareyou.ui.ActivityBase;
+import com.example.javier.whatanimalareyou.ui.ActivityExtras;
 import com.example.javier.whatanimalareyou.ui.ResultsActivity.ResultsActivity;
 
 import java.util.ArrayList;
@@ -223,8 +224,8 @@ public class MainActivity extends ActivityBase implements MainActivityView {
     public void launchResultsActivity(String animalName, int imageId) {
 
         Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
-        intent.putExtra("animal", animalName);
-        intent.putExtra("imageId", imageId);
+        intent.putExtra(ActivityExtras.ANIMAL_NAME_KEY, animalName);
+        intent.putExtra(ActivityExtras.ANIMAL_IMAGE_ID_KEY, imageId);
         startActivity(intent);
     }
 
