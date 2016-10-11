@@ -16,10 +16,12 @@ import com.example.javier.whatanimalareyou.ui.MainActivity.MainActivity;
 
 import java.util.Locale;
 
-public class ResultsActivity extends AppCompatActivity {
+public class ResultsActivity extends AppCompatActivity implements ResultsActivityView {
+
+    private ResultsActivityPresenter mPresenter;
 
     private ImageView mAnimalResultImageView;
-    AppCompatButton mStartOverButton;
+    private AppCompatButton mStartOverButton;
 
     private final String LUCKIEST_GUYS_FONT = "fonts/LuckiestGuy.ttf";
 
@@ -30,31 +32,49 @@ public class ResultsActivity extends AppCompatActivity {
 
         Typeface font = Typeface.createFromAsset(getAssets(), LUCKIEST_GUYS_FONT);
 
-        mAnimalResultImageView = getView(R.id.animalResultImageView);
+        mPresenter = new ResultsActivityPresenter(this);
+
         String animalName = getIntent().getExtras().getString("animal");
-        Integer animalImageId = getIntent().getExtras().getInt("imageId");
-
         String animalResultText = getString(R.string.result_text);
+        String formatedText = String.format(Locale.ENGLISH, animalResultText, animalName);
+        mPresenter.showToastWithAnimalName(formatedText);
 
-        Toast.makeText(this,
-            String.format(Locale.ENGLISH, animalResultText, animalName),
-            Toast.LENGTH_SHORT).show();
-
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), animalImageId);
-        mAnimalResultImageView.setImageBitmap(bitmap);
+        Integer animalImageId = getIntent().getExtras().getInt("imageId");
+        mAnimalResultImageView = getView(R.id.animalResultImageView);
+        mPresenter.updateAnimalResultImageView(animalImageId);
 
         mStartOverButton = getView(R.id.startOverButton);
         mStartOverButton.setTypeface(font);
         mStartOverButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ResultsActivity.this, MainActivity.class);
-                startActivity(intent);
+                mPresenter.launchActivity(MainActivity.class);
             }
         });
     }
 
     private <T extends View> T getView(int id) {
         return (T) findViewById(id);
+    }
+
+    @Override
+    public void updateAnimalImageView(int imageId) {
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), imageId);
+        mAnimalResultImageView.setImageBitmap(bitmap);
+    }
+
+    @Override
+    public void showToastWithAnimalName(String animalNameText) {
+
+        Toast.makeText(this,
+                animalNameText,
+                Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void launchActivity(Class newActivity) {
+
+        Intent intent = new Intent(ResultsActivity.this, newActivity);
+        startActivity(intent);
     }
 }
