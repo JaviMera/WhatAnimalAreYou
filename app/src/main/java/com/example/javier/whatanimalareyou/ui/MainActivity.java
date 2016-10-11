@@ -16,11 +16,16 @@ import com.example.javier.whatanimalareyou.R;
 import com.example.javier.whatanimalareyou.model.animals.AnimalBase;
 import com.example.javier.whatanimalareyou.model.animals.AnimalFactory;
 import com.example.javier.whatanimalareyou.model.animals.AnimalList;
+import com.example.javier.whatanimalareyou.model.animals.concretes.Crocodile;
 import com.example.javier.whatanimalareyou.model.animals.concretes.Dolphin;
 import com.example.javier.whatanimalareyou.model.animals.concretes.Elephant;
+import com.example.javier.whatanimalareyou.model.animals.concretes.Hawk;
 import com.example.javier.whatanimalareyou.model.animals.concretes.Monkey;
+import com.example.javier.whatanimalareyou.model.animals.concretes.Piggy;
 import com.example.javier.whatanimalareyou.model.animals.concretes.RedPanda;
+import com.example.javier.whatanimalareyou.model.animals.concretes.Seal;
 import com.example.javier.whatanimalareyou.model.animals.concretes.Tiger;
+import com.example.javier.whatanimalareyou.model.animals.concretes.WhiteShark;
 import com.example.javier.whatanimalareyou.model.statements.Statement;
 import com.example.javier.whatanimalareyou.model.statements.StatementList;
 
@@ -58,7 +63,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
                 new Elephant(R.drawable.elephant),
                 new Monkey(R.drawable.monkey),
                 new RedPanda(R.drawable.redpanda),
-                new Tiger(R.drawable.tiger));
+                new Tiger(R.drawable.tiger),
+                new Crocodile(R.drawable.crocodile),
+                new Hawk(R.drawable.hawk),
+                new Piggy(R.drawable.piggy),
+                new Seal(R.drawable.seal),
+                new WhiteShark(R.drawable.whiteshark));
 
         final String[] choicesArray = getResources().getStringArray(R.array.choices_array);
 

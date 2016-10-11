@@ -21,7 +21,7 @@ public class AnimalFactory extends AbstractFactory {
     protected AnimalBase selectAnimal(int points) {
 
         for(AnimalBase animal : mAnimalSet){
-            if(points < animal.totalPoints())
+            if(points <= animal.totalPoints())
                 return animal;
         }
 
