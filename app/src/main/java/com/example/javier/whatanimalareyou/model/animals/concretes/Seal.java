@@ -18,8 +18,8 @@ public class Seal extends AnimalBase {
             {
                 add(ChoicePoints.THREE);
                 add(ChoicePoints.FIVE);
-                add(ChoicePoints.THREE);
                 add(ChoicePoints.ONE);
+                add(ChoicePoints.THREE);
                 add(ChoicePoints.TWO);
             }
         };

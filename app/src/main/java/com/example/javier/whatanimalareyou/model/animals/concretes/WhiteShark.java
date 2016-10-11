@@ -18,8 +18,8 @@ public class WhiteShark extends AnimalBase {
             {
                 add(ChoicePoints.THREE);
                 add(ChoicePoints.FOUR);
-                add(ChoicePoints.THREE);
-                add(ChoicePoints.FOUR);
+                add(ChoicePoints.TWO);
+                add(ChoicePoints.FIVE);
                 add(ChoicePoints.FIVE);
             }
         };
