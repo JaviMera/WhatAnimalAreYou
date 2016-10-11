@@ -12,11 +12,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.javier.whatanimalareyou.R;
+import com.example.javier.whatanimalareyou.ui.ActivityBase;
 import com.example.javier.whatanimalareyou.ui.MainActivity.MainActivity;
 
 import java.util.Locale;
 
-public class ResultsActivity extends AppCompatActivity implements ResultsActivityView {
+public class ResultsActivity extends ActivityBase implements ResultsActivityView {
 
     private ResultsActivityPresenter mPresenter;
 
@@ -51,10 +52,6 @@ public class ResultsActivity extends AppCompatActivity implements ResultsActivit
                 mPresenter.launchActivity(MainActivity.class);
             }
         });
-    }
-
-    private <T extends View> T getView(int id) {
-        return (T) findViewById(id);
     }
 
     @Override

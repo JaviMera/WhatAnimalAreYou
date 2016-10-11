@@ -28,6 +28,7 @@ import com.example.javier.whatanimalareyou.model.animals.concretes.Tiger;
 import com.example.javier.whatanimalareyou.model.animals.concretes.WhiteShark;
 import com.example.javier.whatanimalareyou.model.statements.Statement;
 import com.example.javier.whatanimalareyou.model.statements.StatementList;
+import com.example.javier.whatanimalareyou.ui.ActivityBase;
 import com.example.javier.whatanimalareyou.ui.ResultsActivity.ResultsActivity;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements MainActivityView {
+public class MainActivity extends ActivityBase implements MainActivityView {
 
     private AnimalList mAnimalList;
     private StatementList mStatementList;
@@ -247,10 +248,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     public void updateStatementCountTextViewText(int current, int max) {
         String text = String.format(Locale.ENGLISH, "%d of %d", current, max);
         mStatementsCountTextView.setText(text);
-    }
-
-    private <T extends View> T getView(int id) {
-        return (T) findViewById(id);
     }
 
     private void initializeStatementsList(String[] statementsText){
