@@ -1,4 +1,4 @@
-package com.example.javier.whatanimalareyou.ui;
+package com.example.javier.whatanimalareyou.ui.MainActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -28,6 +28,7 @@ import com.example.javier.whatanimalareyou.model.animals.concretes.Tiger;
 import com.example.javier.whatanimalareyou.model.animals.concretes.WhiteShark;
 import com.example.javier.whatanimalareyou.model.statements.Statement;
 import com.example.javier.whatanimalareyou.model.statements.StatementList;
+import com.example.javier.whatanimalareyou.ui.ResultsActivity.ResultsActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;

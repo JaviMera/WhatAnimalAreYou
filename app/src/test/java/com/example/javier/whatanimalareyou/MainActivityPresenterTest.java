@@ -4,9 +4,8 @@ import android.graphics.Typeface;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.javier.whatanimalareyou.ui.MainActivityPresenter;
-import com.example.javier.whatanimalareyou.ui.MainActivityView;
-import com.example.javier.whatanimalareyou.ui.ResultsActivity;
+import com.example.javier.whatanimalareyou.ui.MainActivity.MainActivityPresenter;
+import com.example.javier.whatanimalareyou.ui.MainActivity.MainActivityView;
 
 import org.junit.Before;
 import org.junit.Test;

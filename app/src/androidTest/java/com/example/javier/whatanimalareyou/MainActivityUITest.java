@@ -1,15 +1,10 @@
 package com.example.javier.whatanimalareyou;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.javier.whatanimalareyou.model.animals.AnimalBase;
 import com.example.javier.whatanimalareyou.model.animals.AnimalList;
@@ -18,11 +13,10 @@ import com.example.javier.whatanimalareyou.model.animals.concretes.Elephant;
 import com.example.javier.whatanimalareyou.model.animals.concretes.Monkey;
 import com.example.javier.whatanimalareyou.model.animals.concretes.RedPanda;
 import com.example.javier.whatanimalareyou.model.animals.concretes.Tiger;
-import com.example.javier.whatanimalareyou.ui.MainActivity;
+import com.example.javier.whatanimalareyou.ui.MainActivity.MainActivity;
 
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
-import org.hamcrest.TypeSafeMatcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;

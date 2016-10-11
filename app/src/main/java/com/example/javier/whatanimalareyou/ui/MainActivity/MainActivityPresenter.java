@@ -1,4 +1,4 @@
-package com.example.javier.whatanimalareyou.ui;
+package com.example.javier.whatanimalareyou.ui.MainActivity;
 
 import android.content.Context;
 import android.graphics.Typeface;
