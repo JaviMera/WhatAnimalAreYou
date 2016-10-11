@@ -20,8 +20,8 @@ public class Dolphin extends AnimalBase {
             {
                 add(ChoicePoints.THREE);
                 add(ChoicePoints.TWO);
-                add(ChoicePoints.ONE);
                 add(ChoicePoints.THREE);
+                add(ChoicePoints.ONE);
                 add(ChoicePoints.FOUR);
             }
         };

@@ -17,9 +17,9 @@ public class Crocodile extends AnimalBase {
             {
                 add(ChoicePoints.FOUR);
                 add(ChoicePoints.FIVE);
-                add(ChoicePoints.THREE);
                 add(ChoicePoints.FIVE);
-                add(ChoicePoints.FOUR);
+                add(ChoicePoints.ONE);
+                add(ChoicePoints.FIVE);
             }
         };
     }
