@@ -1,5 +1,6 @@
 package com.example.javier.whatanimalareyou.ui;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
@@ -27,7 +28,7 @@ import java.util.Locale;
 public class ResultsActivity extends AppCompatActivity {
 
     private ImageView mAnimalResultImageView;
-    private AppCompatButton mStartOverButton;
+    AppCompatButton mStartOverButton;
 
     private final String LUCKIEST_GUYS_FONT = "fonts/LuckiestGuy.ttf";
 
@@ -53,6 +54,13 @@ public class ResultsActivity extends AppCompatActivity {
 
         mStartOverButton = getView(R.id.startOverButton);
         mStartOverButton.setTypeface(font);
+        mStartOverButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ResultsActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private <T extends View> T getView(int id) {
