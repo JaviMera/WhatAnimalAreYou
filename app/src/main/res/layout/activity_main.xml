@@ -13,73 +13,78 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingBottom="10dp"
         android:scaleType="fitStart"
         android:src="@mipmap/launcher"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="@drawable/statement_background">
-
-        <TextView
-            android:id="@+id/statementTextView"
-            style="@style/StatementTextView" />
-
-        <TextView
-            android:id="@+id/statementCountTextView"
-            style="@style/StatementCountTextView" />
-
-    </RelativeLayout>
-
-    <Spinner
-        android:id="@+id/choiceSpinnerView"
-        android:background="@drawable/spinner_background"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.4"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="15dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_weight="4"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/previousButtonView"
-            android:textColor="@color/disabled_text_color"
-            android:enabled="false"
-            android:onClick="previousClick"
-            style="@style/PreviousButton"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/statement_background">
 
-        <Button
-            android:id="@+id/nextButtonView"
-            android:textColor="@color/plain_white"
-            android:onClick="nextClick"
-            style="@style/NextButton" />
+            <TextView
+                android:id="@+id/statementTextView"
+                style="@style/StatementTextView" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/statementCountTextView"
+                style="@style/StatementCountTextView" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        </RelativeLayout>
 
-        <Button
-            android:id="@+id/resultsButton"
+        <Spinner
+            android:id="@+id/choiceSpinnerView"
+            android:background="@drawable/spinner_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/results_button_text"
-            android:textColor="@color/plain_white"
-            android:textSize="20sp"
-            android:visibility="invisible"
-            android:background="@drawable/navigation_button_background"
-            />
+            android:layout_centerInParent="true"
+            android:layout_marginTop="15dp"/>
 
-    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
+            <Button
+                android:id="@+id/previousButtonView"
+                android:textColor="@color/disabled_text_color"
+                android:enabled="false"
+                android:onClick="previousClick"
+                style="@style/PreviousButton"/>
+
+            <Button
+                android:id="@+id/nextButtonView"
+                android:textColor="@color/plain_white"
+                android:onClick="nextClick"
+                style="@style/NextButton" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/resultsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/results_button_text"
+                android:textColor="@color/plain_white"
+                android:textSize="20sp"
+                android:visibility="invisible"
+                android:background="@drawable/navigation_button_background"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
 </LinearLayout>

@@ -4,10 +4,7 @@
     android:id="@+id/activity_results"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:padding="10dp"
     tools:context="com.example.javier.whatanimalareyou.ui.ResultsActivity"
     android:orientation="vertical">
 
@@ -15,28 +12,30 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingBottom="10dp"
         android:scaleType="fitStart"
         android:src="@mipmap/launcher"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
-        android:background="@drawable/rounded_background_container"
+        android:layout_weight="4"
         android:orientation="vertical">
 
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_background_container">
 
             <ImageView
                 android:id="@+id/animalResultImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:scaleType="centerInside"/>
+                android:padding="5dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/dolphin"/>
 
             <Button
                 android:id="@+id/captionButtonView"
@@ -50,20 +49,19 @@
                 android:background="@drawable/caption_background"/>
         </FrameLayout>
 
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:layout_marginTop="10dp"
-        android:padding="30dp">
-
-        <Button
-            android:id="@+id/startOverButton"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/start_over_button_text"
-            style="@style/StarOverButton"/>
-    </RelativeLayout>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:padding="30dp">
+
+            <Button
+                android:id="@+id/startOverButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/start_over_button_text"
+                style="@style/StarOverButton"/>
+        </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>
