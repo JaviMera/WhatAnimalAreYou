@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -90,14 +92,33 @@ public class MainActivity extends ActivityBase implements MainActivityView {
             @Override
             public void onClick(View v) {
 
-                int points = getUserPoints(mStatementList.getChoices());
+                View captionLayout = getLayoutInflater().inflate(R.layout.caption_dialog, null);
+                AlertDialog.Builder captionDialogBuilder = new AlertDialog.Builder(v.getContext());
+                captionDialogBuilder.setView(captionLayout);
 
-                AnimalFactory factory = new AnimalFactory(
-                    mAnimalList.getAnimals()
-                );
+                final EditText captionEditText = (EditText) captionLayout.findViewById(R.id.captionEditTextView);
+                final Button submitCaptionButton = (Button) captionLayout.findViewById(R.id.submitCaptionButton);
 
-                AnimalBase animal = factory.calculate(points);
-                mPresenter.launchResultsActivity(animal.getName(), animal.getImageId());
+                submitCaptionButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        int points = getUserPoints(mStatementList.getChoices());
+
+                        AnimalFactory factory = new AnimalFactory(
+                            mAnimalList.getAnimals()
+                        );
+
+                        AnimalBase animal = factory.calculate(points);
+                        mPresenter.launchResultsActivity(
+                            animal.getName(),
+                            animal.getImageId(),
+                            captionEditText.getText().toString());
+                    }
+                });
+
+                AlertDialog captionDialog = captionDialogBuilder.create();
+                captionDialog.show();
             }
         });
 
@@ -219,11 +240,12 @@ public class MainActivity extends ActivityBase implements MainActivityView {
     }
 
     @Override
-    public void launchResultsActivity(String animalName, int imageId) {
+    public void launchResultsActivity(String animalName, int imageId, String caption) {
 
         Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
         intent.putExtra(ActivityExtras.ANIMAL_NAME_KEY, animalName);
         intent.putExtra(ActivityExtras.ANIMAL_IMAGE_ID_KEY, imageId);
+        intent.putExtra(ActivityExtras.ANIMAL_CAPTION_KEY, caption);
         startActivity(intent);
     }
 

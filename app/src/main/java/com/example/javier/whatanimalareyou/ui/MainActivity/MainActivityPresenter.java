@@ -46,7 +46,7 @@ public class MainActivityPresenter {
         mView.updateSpinnerSelectedItem(choicePosition);
     }
 
-    public void launchResultsActivity(String animalName, int imageId) {
-        mView.launchResultsActivity(animalName, imageId);
+    public void launchResultsActivity(String animalName, int imageId, String caption) {
+        mView.launchResultsActivity(animalName, imageId, caption);
     }
 }

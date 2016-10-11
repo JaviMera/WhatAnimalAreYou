@@ -138,11 +138,12 @@ public class MainActivityPresenterTest {
         // Arrange
         String animalName = "Tiger";
         int imageId = R.drawable.tiger;
+        String caption = "RAWR";
 
         // Act
-        mPresenter.launchResultsActivity(animalName, imageId);
+        mPresenter.launchResultsActivity(animalName, imageId, caption);
 
         // Assert
-        Mockito.verify(mView).launchResultsActivity(animalName, imageId);
+        Mockito.verify(mView).launchResultsActivity(animalName, imageId, caption);
     }
 }

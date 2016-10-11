@@ -10,6 +10,7 @@
                 <rotate
                     android:fromDegrees="25">
                     <shape android:shape="oval">
+                        <size android:width="100dp" />
                         <solid android:color="@color/plain_white" />
                     </shape>
                 </rotate>
@@ -18,6 +19,8 @@
                 android:bottom="5dp"
                 android:top="5dp">
                 <shape android:shape="oval">
+                    <size android:width="80dp" />
+                    <size android:height="50dp" />
                     <solid android:color="@color/plain_white" />
                 </shape>
             </item>

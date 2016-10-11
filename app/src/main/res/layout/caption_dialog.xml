@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_background_container"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/caption_question_text"
+            android:textSize="20sp"
+            android:textColor="@color/plain_white"
+            android:padding="15dp"/>
+
+        <EditText
+            android:id="@+id/captionEditTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:textSize="15sp"
+            android:textColor="@color/plain_white"
+            android:hint="Enter caption here..."
+            android:inputType="text"
+            android:textStyle="italic"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submitCaptionButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:textSize="20sp"
+        android:textColor="@color/plain_white"
+        android:background="@drawable/navigation_button_background"/>
+
+</LinearLayout>

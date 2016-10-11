@@ -24,6 +24,7 @@ public class ResultsActivity extends ActivityBase implements ResultsActivityView
 
     private ImageView mAnimalResultImageView;
     private AppCompatButton mStartOverButton;
+    private AppCompatButton mCaptionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,10 @@ public class ResultsActivity extends ActivityBase implements ResultsActivityView
         Typeface font = Typeface.createFromAsset(getAssets(), ActivityExtras.ANIMAL_APP_TYPEFACE);
 
         mPresenter = new ResultsActivityPresenter(this);
+
+        String caption = getIntent().getExtras().getString(ActivityExtras.ANIMAL_CAPTION_KEY);
+        mCaptionButton = getView(R.id.captionButtonView);
+        mCaptionButton.setText(caption);
 
         String animalName = getIntent().getExtras().getString(ActivityExtras.ANIMAL_NAME_KEY);
         String animalResultText = getString(R.string.result_text);

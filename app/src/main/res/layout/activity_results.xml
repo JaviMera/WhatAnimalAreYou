@@ -31,17 +31,18 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:adjustViewBounds="true"
-                android:layout_gravity="center"
-                android:src="@drawable/elephant"/>
+                android:maxWidth="300dp"
+                android:maxHeight="300dp"
+                android:layout_gravity="center"/>
 
             <Button
                 android:id="@+id/captionButtonView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_marginLeft="20dp"
                 android:clickable="false"
                 android:maxLength="6"
+                android:textStyle="bold"
                 android:textColor="@color/container_background_color"
                 android:background="@drawable/caption_background"/>
         </FrameLayout>

@@ -4,6 +4,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.javier.whatanimalareyou.model.animals.AnimalBase;
@@ -26,7 +27,10 @@ import java.util.List;
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.typeText;
+import static android.support.test.espresso.action.ViewActions.typeTextIntoFocusedView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.RootMatchers.isDialog;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -285,14 +289,11 @@ public class MainActivityUITest {
         onView(withId(R.id.resultsButton)).check(matches(isDisplayed()));
     }
 
-        @Test
-    public void resultButtonPressNewActivityResult() throws Exception {
+    @Test
+    public void resultButtonDisplaysCaptionDialogMessage() throws Exception {
 
         // Arrange
         String[] choices = activityRule.getActivity().getResources().getStringArray(R.array.choices_array);
-        String animalsToLookFor = createAnimalResultRegex();
-
-        Integer[] imageIds = {R.drawable.dolphin, R.drawable.elephant, R.drawable.monkey, R.drawable.redpanda, R.drawable.tiger};
 
         // Act
         for(String s : choices){
@@ -302,7 +303,29 @@ public class MainActivityUITest {
         onView(withId(R.id.resultsButton)).perform(click());
 
         // Assert
+        onView(withText(R.string.caption_question_text)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void resultButtonPressNewActivityResult() throws Exception {
+
+        // Arrange
+        String[] choices = activityRule.getActivity().getResources().getStringArray(R.array.choices_array);
+        Integer[] imageIds = {R.drawable.dolphin, R.drawable.elephant, R.drawable.monkey, R.drawable.redpanda, R.drawable.tiger};
+        String expectedCaption = "bark";
+
+        // Act
+        for(String s : choices){
+            onView(withId(R.id.nextButtonView)).perform(click());
+        }
+
+        onView(withId(R.id.resultsButton)).perform(click());
+        onView(withId(R.id.captionEditTextView)).perform(typeText(expectedCaption));
+        onView(withId(R.id.submitCaptionButton)).perform(click());
+
+        // Assert
         onView(withId(R.id.animalResultImageView)).check(matches(new ImageViewMatcher(imageIds)));
+        onView(withId(R.id.captionButtonView)).check(matches(withText(expectedCaption)));
     }
 
     private String createAnimalResultRegex() {

@@ -9,4 +9,5 @@ public class ActivityExtras {
     public final static String ANIMAL_NAME_KEY = "animal";
     public final static String ANIMAL_IMAGE_ID_KEY = "animalImageId";
     public final static String ANIMAL_APP_TYPEFACE = "fonts/LuckiestGuy.ttf";
+    public static final String ANIMAL_CAPTION_KEY = "animalCaption";
 }

@@ -19,5 +19,5 @@ public interface MainActivityView {
     void updateStatementCountTextViewText(int current, int max);
     void updateStatementTextViewText(String text);
     void updateSpinnerSelectedItem(int choicePosition);
-    void launchResultsActivity(String animalName, int imageId);
+    void launchResultsActivity(String animalName, int imageId, String caption);
 }
