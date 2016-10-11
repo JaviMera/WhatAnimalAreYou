@@ -52,14 +52,12 @@ public class MainActivity extends ActivityBase implements MainActivityView {
 
     private MainActivityPresenter mPresenter;
 
-    private final String LUCKIEST_GUYS_FONT = "fonts/LuckiestGuy.ttf";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Typeface font = Typeface.createFromAsset(getAssets(), LUCKIEST_GUYS_FONT);
+        Typeface font = Typeface.createFromAsset(getAssets(), ActivityExtras.ANIMAL_APP_TYPEFACE);
 
         mAnimalList = new AnimalList(
                 new Dolphin(R.drawable.dolphin),
@@ -118,7 +116,7 @@ public class MainActivity extends ActivityBase implements MainActivityView {
         mPresenter.setSpinnerAdapterView(
             this,
             R.layout.spinner_choice_item,
-            LUCKIEST_GUYS_FONT,
+            ActivityExtras.ANIMAL_APP_TYPEFACE,
             Arrays.asList(choicesArray));
 
         mChoiceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -204,7 +202,7 @@ public class MainActivity extends ActivityBase implements MainActivityView {
         ChoiceSpinnerAdapter spinnerAdapter = new ChoiceSpinnerAdapter(
             ctx,
             R.layout.spinner_choice_item,
-            LUCKIEST_GUYS_FONT,
+            fontPath,
             spinnerChoiceItems);
 
         mChoiceSpinner.setAdapter(spinnerAdapter);

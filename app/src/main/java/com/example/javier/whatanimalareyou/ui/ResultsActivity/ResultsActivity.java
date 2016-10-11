@@ -25,14 +25,12 @@ public class ResultsActivity extends ActivityBase implements ResultsActivityView
     private ImageView mAnimalResultImageView;
     private AppCompatButton mStartOverButton;
 
-    private final String LUCKIEST_GUYS_FONT = "fonts/LuckiestGuy.ttf";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
-        Typeface font = Typeface.createFromAsset(getAssets(), LUCKIEST_GUYS_FONT);
+        Typeface font = Typeface.createFromAsset(getAssets(), ActivityExtras.ANIMAL_APP_TYPEFACE);
 
         mPresenter = new ResultsActivityPresenter(this);
 
