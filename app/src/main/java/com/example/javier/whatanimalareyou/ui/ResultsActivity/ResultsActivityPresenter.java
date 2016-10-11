@@ -27,4 +27,8 @@ public class ResultsActivityPresenter {
 
         mView.launchActivity(newActivity);
     }
+
+    public void updateCaptionButtonView(String caption) {
+        mView.updateCaptionButtonView(caption);
+    }
 }

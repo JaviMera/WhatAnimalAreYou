@@ -37,7 +37,7 @@ public class ResultsActivity extends ActivityBase implements ResultsActivityView
 
         String caption = getIntent().getExtras().getString(ActivityExtras.ANIMAL_CAPTION_KEY);
         mCaptionButton = getView(R.id.captionButtonView);
-        mCaptionButton.setText(caption);
+        mPresenter.updateCaptionButtonView(caption);
 
         String animalName = getIntent().getExtras().getString(ActivityExtras.ANIMAL_NAME_KEY);
         String animalResultText = getString(R.string.result_text);
@@ -77,5 +77,10 @@ public class ResultsActivity extends ActivityBase implements ResultsActivityView
 
         Intent intent = new Intent(ResultsActivity.this, newActivity);
         startActivity(intent);
+    }
+
+    @Override
+    public void updateCaptionButtonView(String caption) {
+        mCaptionButton.setText(caption);
     }
 }

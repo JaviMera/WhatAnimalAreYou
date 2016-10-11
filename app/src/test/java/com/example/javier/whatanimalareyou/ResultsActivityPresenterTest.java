@@ -4,6 +4,7 @@ import com.example.javier.whatanimalareyou.ui.MainActivity.MainActivity;
 import com.example.javier.whatanimalareyou.ui.ResultsActivity.ResultsActivityPresenter;
 import com.example.javier.whatanimalareyou.ui.ResultsActivity.ResultsActivityView;
 
+import org.apache.maven.artifact.ant.Mvn;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -65,5 +66,18 @@ public class ResultsActivityPresenterTest {
 
         // Assert
         Mockito.verify(mView).launchActivity(newActivity);
+    }
+
+    @Test
+    public void updateCaptionButtonView() throws Exception {
+
+        // Arrange
+        String caption = "Bark";
+
+        // Act
+        mPresenter.updateCaptionButtonView(caption);
+
+        // Assert
+        Mockito.verify(mView).updateCaptionButtonView(caption);
     }
 }

@@ -6,6 +6,7 @@
     <string name="result_text">You are a %1$s!</string>
     <string name="start_over_button_text">Start Over</string>
     <string name="caption_question_text">What would you like your animal to say?</string>
+    <string name="submit_button_text">Submit</string>
 
     <string-array name="choices_array">
         <item>Totally Disagree</item>

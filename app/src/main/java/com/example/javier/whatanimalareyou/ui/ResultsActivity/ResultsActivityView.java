@@ -9,4 +9,5 @@ public interface ResultsActivityView {
     void updateAnimalImageView(int imageId);
     void showToastWithAnimalName(String animalName);
     void launchActivity(Class newActivity);
+    void updateCaptionButtonView(String caption);
 }

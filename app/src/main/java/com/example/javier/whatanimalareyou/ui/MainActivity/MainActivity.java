@@ -59,7 +59,7 @@ public class MainActivity extends ActivityBase implements MainActivityView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Typeface font = Typeface.createFromAsset(getAssets(), ActivityExtras.ANIMAL_APP_TYPEFACE);
+        final Typeface font = Typeface.createFromAsset(getAssets(), ActivityExtras.ANIMAL_APP_TYPEFACE);
 
         mAnimalList = new AnimalList(
                 new Dolphin(R.drawable.dolphin),
@@ -96,9 +96,14 @@ public class MainActivity extends ActivityBase implements MainActivityView {
                 AlertDialog.Builder captionDialogBuilder = new AlertDialog.Builder(v.getContext());
                 captionDialogBuilder.setView(captionLayout);
 
-                final EditText captionEditText = (EditText) captionLayout.findViewById(R.id.captionEditTextView);
-                final Button submitCaptionButton = (Button) captionLayout.findViewById(R.id.submitCaptionButton);
+                final TextView captionQuestionTextView = (TextView) captionLayout.findViewById(R.id.captionQuestionTextView);
+                captionQuestionTextView.setTypeface(font);
 
+                final EditText captionEditText = (EditText) captionLayout.findViewById(R.id.captionEditTextView);
+                captionEditText.setTypeface(font);
+
+                final Button submitCaptionButton = (Button) captionLayout.findViewById(R.id.submitCaptionButton);
+                submitCaptionButton.setTypeface(font);
                 submitCaptionButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
