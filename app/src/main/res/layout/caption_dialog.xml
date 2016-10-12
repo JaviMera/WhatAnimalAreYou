@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:padding="15dp"
             android:textSize="15sp"
+            android:maxLength="6"
             android:textColor="@color/plain_white"
             android:hint="Enter caption here..."
             android:inputType="text"

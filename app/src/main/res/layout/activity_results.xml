@@ -41,7 +41,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:clickable="false"
-                android:maxLength="6"
                 android:textStyle="bold"
                 android:textColor="@color/container_background_color"
                 android:background="@drawable/caption_background"/>
