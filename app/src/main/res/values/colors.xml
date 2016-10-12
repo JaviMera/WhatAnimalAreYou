@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="choice_text_color">#A7A9AB</color>
-    <color name="container_background_color">#FFBA26</color>
+    <color name="container_background_color">#EF4036</color>
     <color name="plain_white">#ffffff</color>
-    <color name="statement_count_text_color">#9C7C35</color>
-    <color name="container_disabled_background">#FFF5E0</color>
-    <color name="container_shadow_background">#AC7600</color>
-    <color name="container_disabled_shadow_background">#CDBD9B</color>
+    <color name="statement_count_text_color">#A7A9AB</color>
+    <color name="container_disabled_background">#FF8C86</color>
+    <color name="container_shadow_background">#C5342B</color>
+    <color name="container_disabled_shadow_background">#A45E5A</color>
     <color name="disabled_text_color">#564F4F</color>
 </resources>

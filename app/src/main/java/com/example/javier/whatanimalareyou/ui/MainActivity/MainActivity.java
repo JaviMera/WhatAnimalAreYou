@@ -45,6 +45,8 @@ public class MainActivity extends ActivityBase implements MainActivityView {
     private StatementList mStatementList;
     private Statement mCurrentStatement;
 
+    private final int DEFAULT_CHOICE = 2; // neutral
+
     private Spinner mChoiceSpinner;
     private TextView mStatementTextView;
     private TextView mStatementsCountTextView;
@@ -157,6 +159,8 @@ public class MainActivity extends ActivityBase implements MainActivityView {
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
+
+        updateSpinnerSelectedItem(mCurrentStatement);
     }
 
     private int getUserPoints(List<Integer> statementsAnwers) {
@@ -291,8 +295,8 @@ public class MainActivity extends ActivityBase implements MainActivityView {
 
         if(currentStatement.getChoice() == -1){
 
-            currentStatement.setChoice(0);
-            mPresenter.updateSpinnerSelectedItem(0);
+            currentStatement.setChoice(DEFAULT_CHOICE);
+            mPresenter.updateSpinnerSelectedItem(DEFAULT_CHOICE);
         }
         else
         {

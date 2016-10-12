@@ -7,5 +7,5 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:scaleType="fitStart"
-        android:src="@mipmap/launcher"/>
+        android:src="@drawable/app_logo"/>
 </merge>
