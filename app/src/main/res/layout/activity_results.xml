@@ -33,12 +33,13 @@
                 android:adjustViewBounds="true"
                 android:maxWidth="300dp"
                 android:maxHeight="300dp"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                tools:src="@drawable/dolphin"/>
 
             <Button
                 android:id="@+id/captionButtonView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="88dp"
+                android:layout_height="43dp"
                 android:layout_gravity="left"
                 android:clickable="false"
                 android:textStyle="bold"
