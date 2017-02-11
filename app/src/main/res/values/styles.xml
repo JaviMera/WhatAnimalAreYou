@@ -16,12 +16,10 @@
 
     <style name="StatementTextView" parent="TextViewBase">
         <item name="android:textColor">@color/plain_white</item>
-        <item name="android:layout_alignParentTop">true</item>
     </style>
 
     <style name="StatementCountTextView" parent="TextViewBase">
         <item name="android:textColor">@color/statement_count_text_color</item>
-        <item name="android:layout_alignParentBottom">true</item>
     </style>
 
     <style name="NavButton">
